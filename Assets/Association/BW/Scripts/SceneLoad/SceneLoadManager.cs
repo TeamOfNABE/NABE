@@ -7,16 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour
 {
-    static string sceneName = "Start";
+    static string sceneName = "Null";
+
     [SerializeField] private Slider progressbar;
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private TextMeshProUGUI progressText;
 
-    public static void SceneLoad(string scene)
+    public static void SceneLoad(SceneName scene)
     {
-        sceneName = scene;
-        
-        SceneManager.LoadScene("Loading");
+        if (scene == SceneName.Null || scene == SceneName.Loading) return;
+        if (scene.ToString() == SceneManager.GetActiveScene().name) return;
+
+        var targetScene = scene;
+        sceneName = scene.ToString();
+
+        SceneManager.LoadScene(SceneName.Loading.ToString());
     }
 
     private void Start()
@@ -47,11 +52,9 @@ public class SceneLoadManager : MonoBehaviour
                 progressText.text = "100 %";
                 if (progressbar.value == 1.0f) {
                     op.allowSceneActivation = true;
-                    // Fade In
                     yield break;
                 }
             }
-        }
-            
+        }  
     }
 }
