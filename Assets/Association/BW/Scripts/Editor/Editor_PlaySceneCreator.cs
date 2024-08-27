@@ -65,6 +65,8 @@ public class Editor_PlaySceneCreator : EditorWindow
         sw.WriteLine('}');
         sw.Close();
 
+        AssetDatabase.Refresh();
+        SceneView.RepaintAll();
         UnityEngine.Debug.Log("Successfully created Editor_PlayScene.cs file.");
     }
 
