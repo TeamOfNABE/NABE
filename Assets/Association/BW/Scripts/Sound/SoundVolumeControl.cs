@@ -33,7 +33,7 @@ public class SoundVolumeControl : MonoBehaviour
     {
         masterVol = PlayerPrefsData.Get<float>("MasterVol", 0.5f);
         musicVol = PlayerPrefsData.Get<float>("MusicVol", 0.5f);
-        sfxVol = PlayerPrefsData.Get<float>("SFXVol", 1f);
+        sfxVol = PlayerPrefsData.Get<float>("SFXVol", 0.5f);
     }
 
     private void SetVolume(float masterVol, float musicVol, float sfxVol)
