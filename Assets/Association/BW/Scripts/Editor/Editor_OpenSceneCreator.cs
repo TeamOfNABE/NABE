@@ -51,6 +51,8 @@ public class Editor_OpenSceneCreator : EditorWindow
         sw.WriteLine("}");
         sw.Close();
 
+        AssetDatabase.Refresh();
+        SceneView.RepaintAll();
         UnityEngine.Debug.Log("Successfully created Editor_OpenScene.cs file.");
     }
 

@@ -37,6 +37,9 @@ public class Editor_SceneNameCreator
         sw.WriteLine($"\tNull,");
         sw.WriteLine("}");
         sw.Close();
+
+        AssetDatabase.Refresh();
+        SceneView.RepaintAll();
         UnityEngine.Debug.Log("Successfully created scene enum file.");
     }
 
