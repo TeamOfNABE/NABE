@@ -3,25 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIEvent : IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
+public abstract class UIEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public void OnPointerClick(PointerEventData eventData) // Click
+    protected RectTransform rect;
+    public abstract void OnPointerEnter(PointerEventData eventData);
+    public abstract void OnPointerExit(PointerEventData eventData);
+    public abstract void OnPointerClick(PointerEventData eventData);
+
+    private void Awake()
     {
-        Debug.Log("Click");
-    }
-    
-    public void OnDrag(PointerEventData eventData) // Drag
-    {
-        Debug.Log("Drag");
-    }
-    
-    public void OnPointerEnter(PointerEventData eventData) // Enter
-    {
-        Debug.Log("Enter");
-    }
-    
-    public void OnPointerExit(PointerEventData eventData) // Exit
-    {
-        Debug.Log("Exit");
+        rect = GetComponent<RectTransform>();
     }
 }
