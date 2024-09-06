@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadePopup : MonoSingleton<FadePopup>
+public class FadePopup : Popup
 {
-    [SerializeField] private GameObject fade;
+    private RectTransform rect;
     [SerializeField] private Image maskImage;
     [SerializeField] private Image maskedImage;
     [SerializeField, Range(0.1f, 3f)] private float fadeSpeed = 1f;
@@ -15,13 +15,15 @@ public class FadePopup : MonoSingleton<FadePopup>
 
     private void Awake()
     {
+        rect = GetComponent<RectTransform>();
+
         // 이미지 안가리도록 maskImage 마스크 설정 해 두기
         maskImage.TryGetComponent<RectTransform>(out RectTransform maskImageRect);
         maskImageMaxWidth = maskImageRect.rect.width;
         maskImageMaxHeight = maskImageRect.rect.height;
 
         // UnActive maskImage
-        fade.SetActive(false);
+        maskImage.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -35,7 +37,7 @@ public class FadePopup : MonoSingleton<FadePopup>
         yield return null;
         maskImage.TryGetComponent<RectTransform>(out RectTransform maskImageRect);
         maskImageRect.sizeDelta = new Vector2(maskImageMaxWidth, maskImageMaxHeight);
-        fade.SetActive(true);
+        maskImage.gameObject.SetActive(true);
 
         float currentTime = 0;
         float currentWidth = maskImageMaxWidth;
@@ -64,7 +66,7 @@ public class FadePopup : MonoSingleton<FadePopup>
         yield return null;
         maskImage.TryGetComponent<RectTransform>(out RectTransform maskImageRect);
         maskImageRect.sizeDelta = new Vector2(0, 0);
-        fade.SetActive(true);
+        maskImage.gameObject.SetActive(true);
 
         float currentTime = 0;
         float currentWidth = 0;
@@ -80,6 +82,6 @@ public class FadePopup : MonoSingleton<FadePopup>
 
             if (currentWidth >= maskImageMaxWidth && currentHeight >= maskImageMaxHeight) break;
         }
-        fade.SetActive(false);
+        maskImage.gameObject.SetActive(false);
     }
 }

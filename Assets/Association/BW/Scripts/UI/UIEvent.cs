@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public abstract class UIEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    protected RectTransform rect;
+    public RectTransform rect;
     public abstract void OnPointerEnter(PointerEventData eventData);
     public abstract void OnPointerExit(PointerEventData eventData);
     public abstract void OnPointerClick(PointerEventData eventData);

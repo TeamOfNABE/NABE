@@ -11,6 +11,7 @@ public class UIClickItem : UIEvent
     public override void OnPointerEnter(PointerEventData eventData)
     {
         if (isPointerSizeUp) {
+            DOTween.Kill(rect);
             rect.DOScale(1.1f, .2f);
         }
     }
@@ -18,6 +19,7 @@ public class UIClickItem : UIEvent
     public override void OnPointerExit(PointerEventData eventData)
     {
         if (isPointerSizeUp) {
+            DOTween.Kill(rect);
             rect.DOScale(1f, .2f);
         }
     }

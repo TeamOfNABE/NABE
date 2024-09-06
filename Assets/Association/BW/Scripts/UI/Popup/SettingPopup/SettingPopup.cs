@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionPopup : MonoSingleton<OptionPopup>
+public class SettingPopup : Popup
 {
     
 }
