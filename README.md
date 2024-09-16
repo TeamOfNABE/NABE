@@ -1,3 +1,7 @@
+폴리싱 브랜치, 메인으로부터 pull request 받을 시 업데이트.
+소스코드 처리가 아닌 로컬 값 조절 위주
+
+
 ## Platform : Unity Engine 2D
 ## Editor Version : 2022.3.43f1
 
@@ -8,3 +12,6 @@
 5. Projects -> Add 아래 화살표 -> Add project from disk -> 프로젝트에 저장된 폴더 선택
 
 ### Team Member
+
+
+
