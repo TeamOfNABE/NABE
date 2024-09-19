@@ -38,7 +38,7 @@ public class FadePopup : Popup
         maskImage.TryGetComponent<RectTransform>(out RectTransform maskImageRect);
         maskImageRect.sizeDelta = new Vector2(maskImageMaxWidth, maskImageMaxHeight);
         maskImage.gameObject.SetActive(true);
-
+            
         float currentTime = 0;
         float currentWidth = maskImageMaxWidth;
         float currentHeight = maskImageMaxHeight;
