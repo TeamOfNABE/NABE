@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagingEnumData<TEnum,T> : IManagingDataHandler<TEnum,T> where TEnum : Enum
+public abstract class ManagingEnumData<TEnum,T> : IManagingDataHandler<TEnum,T> where TEnum : Enum
 {
-
     internal Dictionary<TEnum, ManagingData<T>> DataSet = null;
 
     public ManagingEnumData()
@@ -33,11 +32,15 @@ public class ManagingEnumData<TEnum,T> : IManagingDataHandler<TEnum,T> where TEn
         return DataSet[type].Data;
     }
     
-
     public void Set(TEnum type, T value)
     {
-        DataSet[type].Data = value;
+        if (IsAvailable(value))
+        {
+            DataSet[type].Data = value;
+        }
     }
+
+    abstract internal bool IsAvailable(T type);
 
     public void SetDelta(TEnum type, T value)
     {
