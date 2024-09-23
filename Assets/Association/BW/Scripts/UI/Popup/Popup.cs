@@ -30,7 +30,7 @@ public class Popup : MonoBehaviour
     {
         // Get Reference
         rect = GetComponent<RectTransform>();
-        rect.SetParent(SceneCanvas.instance.transform, false);
+        rect.SetParent(MainCanvas.instance.transform, false);
 
         canvasGroup = GetComponent<CanvasGroup>();
 
@@ -65,7 +65,7 @@ public class Popup : MonoBehaviour
     /// </summary>
     private void SettingDimmed()
     {
-        Dimmed dimmed = Instantiate(Resources.Load<Dimmed>(dimmedPath), SceneCanvas.instance.transform, false);
+        Dimmed dimmed = Instantiate(Resources.Load<Dimmed>(dimmedPath), MainCanvas.instance.transform, false);
         this.transform.SetParent(dimmed.transform, false);
     }
 
