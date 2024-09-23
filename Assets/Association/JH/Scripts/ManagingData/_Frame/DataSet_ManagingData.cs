@@ -92,7 +92,7 @@ public abstract class ManagingEnumData<TEnum, T> : IManagingDataHandler<TEnum, T
 }
 
 
-public class ManagingCurrencyInt : ManagingEnumData<CurrencyType_Int,int>
+public class ManagingCurrencyInt : ManagingEnumData<DefaultCurrency,int>
 {
     internal override bool IsAvailable(int input)
     {
@@ -100,9 +100,16 @@ public class ManagingCurrencyInt : ManagingEnumData<CurrencyType_Int,int>
     }
 }
 
-public class ManagingVisualTypeString : ManagingEnumData<VisualType_String, string> {
+public class ManagingVisualTypeString : ManagingEnumData<VisualType, string> {
     internal override bool IsAvailable(string input)
     {
         return true;
+    }
+}
+public class ManagingReturnEnumInt : ManagingEnumData<TestEnum, int>
+{
+    internal override bool IsAvailable(int input)
+    {
+        return input >= 0;
     }
 }
