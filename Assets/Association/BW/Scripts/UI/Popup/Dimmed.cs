@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Dimmed : UIClickItem
+public class Dimmed : UIButtonItem
 {
     private bool isClicked = false;
 
-    public override void OnPointerClick(PointerEventData eventData)
+    public override void OnClick(PointerEventData eventData)
     {
         // Dimmed 앞쪽 UI제외 (현재 컨텐츠 제외)
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);

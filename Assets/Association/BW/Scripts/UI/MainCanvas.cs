@@ -5,7 +5,11 @@ using UnityEngine;
 public class MainCanvas : MonoBehaviour
 {
     public static MainCanvas instance;
-    public RectTransform rect;
+    [ReadOnly] public RectTransform rect;
+
+    public Profile_Main profile_Main;
+    public Currency_Main currency_Main;
+    public RoundInfo_Main roundInfo_Main;
 
     private void Awake()
     {

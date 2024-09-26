@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using System;
 
-public class UIClickItem : UIEvent
+public class UIButtonItem : UIEvent
 {
     public bool isPointerSizeUp = true;
 
-    public override void OnPointerEnter(PointerEventData eventData)
+    public override void OnEnter(PointerEventData eventData)
     {
         if (isPointerSizeUp) {
             DOTween.Kill(rect);
@@ -16,7 +17,7 @@ public class UIClickItem : UIEvent
         }
     }
 
-    public override void OnPointerExit(PointerEventData eventData)
+    public override void OnExit(PointerEventData eventData)
     {
         if (isPointerSizeUp) {
             DOTween.Kill(rect);
@@ -24,7 +25,7 @@ public class UIClickItem : UIEvent
         }
     }
 
-    public override void OnPointerClick(PointerEventData eventData)
+    public override void OnClick(PointerEventData eventData)
     {
         Debug.Log("Click");
     }

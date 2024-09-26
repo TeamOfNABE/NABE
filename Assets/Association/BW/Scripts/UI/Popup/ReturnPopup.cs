@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ReturnPopup : UIClickItem
+public class ReturnPopup : UIButtonItem
 {
     private bool isClicked = false;
 
-    public override void OnPointerClick(PointerEventData eventData)
+    public override void OnClick(PointerEventData eventData)
     {
         if (isClicked) return;
 
