@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
 
-public class UIPopupItem : UIEvent
+public class UIPopup : UIItem
 {
     public bool isPointerSizeUp = true;
     public PopupType popupType;

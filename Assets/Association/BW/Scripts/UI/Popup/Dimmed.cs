@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Dimmed : UIButtonItem
+public class Dimmed : UIButton
 {
     private bool isClicked = false;
 

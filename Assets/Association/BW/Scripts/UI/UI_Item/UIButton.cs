@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
 
-public class UIButtonItem : UIEvent
+public class UIButton : UIItem
 {
     public bool isPointerSizeUp = true;
 

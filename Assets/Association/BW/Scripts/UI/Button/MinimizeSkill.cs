@@ -5,40 +5,41 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class MinimizeSkill : UIButtonItem, IMinimizeToggle
+public class MinimizeSkill : UIButton, IMinimizeToggle
 {
-    public bool IsMinimize { get; set; }
-    [field : SerializeField] public Image Image { get; set; }
-    [field : SerializeField] public RectTransform MinimizetTarget { get; set; }
-    public float MinimizeTime { get; set; } = .5f;
+    public bool isMinimize { get; set; }
+    public float minimizeTime { get; set; } = .5f;
+    [field : SerializeField] public Image image { get; set; }
+    [field : SerializeField] public RectTransform minimizetTarget { get; set; }
+
     private Vector2 originalSize;
 
     protected override void Awake()
     {
         base.Awake();
-        originalSize = MinimizetTarget.rect.size;
+        originalSize = minimizetTarget.rect.size;
     }
     
     public override void OnClick(PointerEventData eventData)
     {
-        MinimizetTarget.DOKill();
-        Image.transform.DOKill();
+        minimizetTarget.DOKill();
+        image.transform.DOKill();
 
-        if (IsMinimize) Maximize();
+        if (isMinimize) Maximize();
         else Minimize();
     }
 
     public void Maximize()
     {
-        MinimizetTarget.DOSizeDelta(originalSize, MinimizeTime).SetEase(Ease.OutBack);
-        Image.transform.DOScaleX(1f, .2f).SetDelay(MinimizeTime * 0.7f);
-        IsMinimize = false;
+        minimizetTarget.DOSizeDelta(originalSize, minimizeTime).SetEase(Ease.OutBack);
+        image.transform.DOScaleX(1f, minimizeTime / 2).SetDelay(minimizeTime / 2);
+        isMinimize = false;
     }
 
     public void Minimize()
     {
-        MinimizetTarget.DOSizeDelta(new Vector2(0f, originalSize.y), MinimizeTime).SetEase(Ease.InBack);
-        Image.transform.DOScaleX(-1f, .2f).SetDelay(MinimizeTime);
-        IsMinimize = true;
+        minimizetTarget.DOSizeDelta(new Vector2(0f, originalSize.y), minimizeTime).SetEase(Ease.InBack);
+        image.transform.DOScaleX(-1f, minimizeTime / 2).SetDelay(minimizeTime);
+        isMinimize = true;
     }
 }

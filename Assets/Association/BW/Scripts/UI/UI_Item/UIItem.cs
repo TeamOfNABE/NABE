@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class UIEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public abstract class UIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     protected Action action;
     [ReadOnly] public RectTransform rect;

@@ -6,24 +6,24 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
 
-public class MinimizeStatus : UIButtonItem, IMinimizeToggle
+public class MinimizeStatus : UIButton, IMinimizeToggle
 {
-    public bool IsMinimize { get; set; }
-    [field : SerializeField] public Image Image { get; set; }
-    [field : SerializeField] public RectTransform MinimizetTarget { get; set; }
-    
-    public float MinimizeTime { get; set; } = .5f;
-    private Vector2 originalSize;
+    public bool isMinimize { get; set; }
+    public float minimizeTime { get; set; } = .5f;
+    [field : SerializeField] public Image image { get; set; }
+    [field : SerializeField] public RectTransform minimizetTarget { get; set; }
 
     [Space(20f)]
+    private Vector2 originalSize;
     [SerializeField] private RectTransform hideTarget;
     [SerializeField] private RectTransform[] invisibleTarget;
     private CanvasGroup[] invisibleCanvasGroup;
+    public MinimizeQuick minimizeQuick;
 
     protected override void Awake()
     {
         base.Awake();
-        originalSize = MinimizetTarget.rect.size;
+        originalSize = minimizetTarget.rect.size;
 
         invisibleCanvasGroup = new CanvasGroup[invisibleTarget.Length];
         for (int i = 0; i < invisibleTarget.Length; ++i) {
@@ -33,25 +33,30 @@ public class MinimizeStatus : UIButtonItem, IMinimizeToggle
 
     public override void OnClick(PointerEventData eventData)
     {
-        if (IsMinimize) Maximize();
+        minimizetTarget.DOKill();
+        foreach (var item in invisibleCanvasGroup) item.DOKill();
+
+        if (isMinimize) Maximize();
         else Minimize();
     }
 
     public void Maximize()
     {
-        DOTween.To(() => MinimizetTarget.rect.height, x => MinimizetTarget.sizeDelta = new Vector2(0, x), originalSize.y, MinimizeTime);
-        foreach (var item in invisibleTarget) {
-            item.GetComponent<CanvasGroup>().DOFade(1f, MinimizeTime);
+        DOTween.To(() => minimizetTarget.rect.height, x => minimizetTarget.sizeDelta = new Vector2(0, x), originalSize.y, minimizeTime);
+        foreach (var item in invisibleCanvasGroup) {
+            item.DOFade(1f, minimizeTime);
         }
-        IsMinimize = false;
+        minimizeQuick.Maximize();
+        isMinimize = false;
     }
 
     public void Minimize()
     {
-        DOTween.To(() => MinimizetTarget.rect.height, x => MinimizetTarget.sizeDelta = new Vector2(0, x), originalSize.y - hideTarget.sizeDelta.y, MinimizeTime);
-        foreach (var item in invisibleTarget) {
-            item.GetComponent<CanvasGroup>().DOFade(0f, MinimizeTime);
+        DOTween.To(() => minimizetTarget.rect.height, x => minimizetTarget.sizeDelta = new Vector2(0, x), originalSize.y - hideTarget.sizeDelta.y, minimizeTime);
+        foreach (var item in invisibleCanvasGroup) {
+            item.DOFade(0f, minimizeTime);
         }
-        IsMinimize = true;
+        minimizeQuick.Minimize();
+        isMinimize = true;
     }
 }

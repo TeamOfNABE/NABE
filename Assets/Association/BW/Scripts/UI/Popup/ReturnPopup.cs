@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ReturnPopup : UIButtonItem
+public class ReturnPopup : UIButton
 {
     private bool isClicked = false;
 

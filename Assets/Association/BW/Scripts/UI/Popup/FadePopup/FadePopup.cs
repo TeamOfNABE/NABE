@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class FadePopup : Popup
 {
-    private RectTransform rect;
     [SerializeField] private Image maskImage;
     [SerializeField] private Image maskedImage;
     [SerializeField, Range(0.1f, 3f)] private float fadeSpeed = 1f;
@@ -15,8 +14,6 @@ public class FadePopup : Popup
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
-
         // 이미지 안가리도록 maskImage 마스크 설정 해 두기
         maskImage.TryGetComponent<RectTransform>(out RectTransform maskImageRect);
         maskImageMaxWidth = maskImageRect.rect.width;
