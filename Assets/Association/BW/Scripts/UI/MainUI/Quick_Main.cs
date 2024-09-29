@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quick_Main : MonoBehaviour
+public class Quick_Main : MainPanel
 {
     // Left Quick Panel
     [field : SerializeField] public UIItem adventureButton { get; private set; }
@@ -18,4 +18,5 @@ public class Quick_Main : MonoBehaviour
     [field : SerializeField] public UIItem quick6Button { get; private set; }
     [field : SerializeField] public UIItem quick7Button { get; private set; }
     [field : SerializeField] public UIItem quick8Button { get; private set; }
+    [field : SerializeField] public UIItem minimize { get; private set; }
 }

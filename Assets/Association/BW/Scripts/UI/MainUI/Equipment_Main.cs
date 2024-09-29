@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment_Main : MonoBehaviour
+public class Equipment_Main : MainPanel
 {
     [field : SerializeField] public UIItem hat { get; private set; } // 투구
     [field : SerializeField] public UIItem top { get; private set; } // 상의

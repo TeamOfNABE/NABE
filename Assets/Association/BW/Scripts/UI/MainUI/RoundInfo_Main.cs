@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class RoundInfo_Main : MonoBehaviour
+public class RoundInfo_Main : MainPanel
 {
     [field : SerializeField] public UIItem accelButton { get; private set; }
     [field : SerializeField] public TMP_Text roundText { get; private set; }

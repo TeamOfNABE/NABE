@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Profile_Main : MonoBehaviour
+public class Profile_Main : MainPanel
 {
     [field : SerializeField] public Image profileImg { get; private set; }
     [field : SerializeField] public TMP_Text levelText { get; private set; }
