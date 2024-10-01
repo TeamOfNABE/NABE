@@ -8,5 +8,5 @@ using UnityEngine.UI;
 public class Chat_Main : MainPanel
 {
     [field : SerializeField] public UIItem chat { get; private set; }
-    [field : SerializeField] public UI_MinimizeChat[] minimizeChat { get; private set; }
+    [field : SerializeField] public SmallChat[] minimizeChat { get; private set; }
 }

@@ -10,6 +10,7 @@ public enum PopupType
     ProfilePopup, // 프로필 팝업
     SettingPopup, // 설정창 (사운드, 등등)
     FadePopup, // Fade In, Out
+    TabPopup,
 }
 
 public class PopupManager : MonoSingleton<PopupManager>
@@ -24,8 +25,6 @@ public class PopupManager : MonoSingleton<PopupManager>
 
         var popup = Instantiate(Resources.Load<Popup>(popupResourcesPath + popupType), popupCanvas.transform, false);
         popupList.Add(popup);
-
-        popup.OpenPopup();
     }
 
     public void Close(Popup popup)

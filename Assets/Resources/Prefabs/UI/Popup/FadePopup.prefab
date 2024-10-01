@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2691961018599014479}
   - component: {fileID: 7311230429684417853}
+  - component: {fileID: 5391532912675900811}
   - component: {fileID: 2584824271505757878}
   m_Layer: 5
   m_Name: FadePopup
@@ -136,6 +137,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6251743534639186623}
   m_CullTransparentMesh: 1
+--- !u!225 &5391532912675900811
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251743534639186623}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &2584824271505757878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbac75103dc01043865fb189f7b5808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupEffectType: 0
   isDimmed: 0
   maskImage: {fileID: 6675291933261714352}
   maskedImage: {fileID: 5077308735206139522}

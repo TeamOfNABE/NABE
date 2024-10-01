@@ -10228,7 +10228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popupType: 6
 --- !u!1 &1004347754
 GameObject:
   m_ObjectHideFlags: 0
@@ -14393,7 +14393,7 @@ GameObject:
   - component: {fileID: 1493513435}
   - component: {fileID: 1493513436}
   m_Layer: 5
-  m_Name: Option
+  m_Name: OptionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

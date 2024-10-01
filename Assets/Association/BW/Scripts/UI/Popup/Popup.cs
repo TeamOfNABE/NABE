@@ -16,6 +16,7 @@ public enum PopupEffectType
     RightToLeft,
 }
 
+[RequireComponent(typeof(CanvasGroup))]
 public class Popup : MonoBehaviour
 {
     private RectTransform rect;
@@ -56,6 +57,7 @@ public class Popup : MonoBehaviour
             }
             canvasGroup.alpha = 0f;
         }
+        OpenPopup();
     }
 
     /// <summary>

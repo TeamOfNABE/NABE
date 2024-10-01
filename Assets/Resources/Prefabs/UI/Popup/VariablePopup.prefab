@@ -1076,6 +1076,7 @@ GameObject:
   - component: {fileID: 2800381031807435372}
   - component: {fileID: 2071351297358887137}
   - component: {fileID: 981472010518449386}
+  - component: {fileID: 8583616442876448225}
   - component: {fileID: 359695059603410254}
   - component: {fileID: 4243476169470478189}
   m_Layer: 5
@@ -1143,6 +1144,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &8583616442876448225
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412323827323824145}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &359695059603410254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,4 +1194,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43afb51b7761d74d9b22490cb02347a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupEffectType: 0
   isDimmed: 1
