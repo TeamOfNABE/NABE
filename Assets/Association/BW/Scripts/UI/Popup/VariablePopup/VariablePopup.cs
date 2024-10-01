@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class VariablePopup : Popup
 {
-    
+    public override void OK()
+    {
+        
+    }
 }

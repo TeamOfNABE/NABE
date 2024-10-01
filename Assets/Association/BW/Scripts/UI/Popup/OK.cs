@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ReturnPopup : UIButton
+public class OK : UIButton
 {
-    private bool isClicked = false;
-
     public override void OnClick(PointerEventData eventData)
     {
-        if (isClicked) return;
-
         Popup popup = this.GetComponentInParent<Popup>();
-        PopupManager.instance.Close(popup);
+
+        if (popup.isClose) return;
+        popup.isClose= true;
+
+        PopupManager.instance.OK(popup);
     }
 }

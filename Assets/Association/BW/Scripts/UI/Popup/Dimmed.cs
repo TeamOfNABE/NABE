@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Dimmed : UIButton
 {
-    private bool isClicked = false;
-
     public override void OnClick(PointerEventData eventData)
     {
         // Dimmed 앞쪽 UI제외 (현재 컨텐츠 제외)
@@ -16,10 +14,11 @@ public class Dimmed : UIButton
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         if (results[0].gameObject != this.gameObject) return;
 
-        // 첫 클릭 시만 Close 예외 처리
-        if (isClicked) return;
-
         Popup popup = this.GetComponentInChildren<Popup>();
+
+        if (popup.isClose) return;
+        popup.isClose = true;
+        
         PopupManager.instance.Close(popup);
     }
 }

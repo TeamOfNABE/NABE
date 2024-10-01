@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public enum PopupType
 {
@@ -17,20 +18,30 @@ public class PopupManager : MonoSingleton<PopupManager>
 {
     [SerializeField, ReadOnly(true)] private Canvas popupCanvas;
     [SerializeField, ReadOnly] private string popupResourcesPath = "Prefabs/UI/Popup/";
-    [SerializeField, ReadOnly] private List<Popup> popupList = new List<Popup>();
+    [SerializeField, ReadOnly] private List<PopupType> popupTypeList = new List<PopupType>();
 
     public void Open(PopupType popupType)
     {
         if (popupType == PopupType.Null) return;
+        if (popupTypeList.Contains(popupType)) return;
 
         var popup = Instantiate(Resources.Load<Popup>(popupResourcesPath + popupType), popupCanvas.transform, false);
-        popupList.Add(popup);
+        popup.popupType = popupType;
+
+        popupTypeList.Add(popupType);
     }
 
     public void Close(Popup popup)
     {
-        popupList.Remove(popup);
+        popupTypeList.Remove(popup.popupType);
 
         popup.ClosePopup();
+    }
+
+    public void OK(Popup popup)
+    {
+        popup.OK();
+
+        Close(popup);
     }
 }

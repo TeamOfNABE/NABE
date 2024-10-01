@@ -6,21 +6,19 @@ using UnityEngine.UI;
 
 public class SoundVolumeControl : MonoBehaviour
 {
-    [SerializeField] private Slider masterSlider;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private SoundVolumeView soundVolumeView;
 
     private void Start()
     {
         // Slider Setting (Min value shoule be '0.0001f')
-        masterSlider.minValue = 0.0001f;
-        musicSlider.minValue = 0.0001f;
-        sfxSlider.minValue = 0.0001f;
+        soundVolumeView.masterSlider.minValue = 0.0001f;
+        soundVolumeView.musicSlider.minValue = 0.0001f;
+        soundVolumeView.sfxSlider.minValue = 0.0001f;
 
         // Slider OnValueChanged Setting
-        masterSlider.onValueChanged.AddListener((value) => SoundManager.instance.MasterVolume(value));
-        musicSlider.onValueChanged.AddListener((value) => SoundManager.instance.MusicVolume(value));
-        sfxSlider.onValueChanged.AddListener((value) => SoundManager.instance.SFXVolume(value));
+        soundVolumeView.masterSlider.onValueChanged.AddListener((value) => SoundManager.instance.MasterVolume(value));
+        soundVolumeView.musicSlider.onValueChanged.AddListener((value) => SoundManager.instance.MusicVolume(value));
+        soundVolumeView.sfxSlider.onValueChanged.AddListener((value) => SoundManager.instance.SFXVolume(value));
         
         // Get Saved value
         GetVolume(out float masterVol, out float musicVol, out float sfxVol);
@@ -42,20 +40,15 @@ public class SoundVolumeControl : MonoBehaviour
         SoundManager.instance.MusicVolume(musicVol);
         SoundManager.instance.SFXVolume(sfxVol);
 
-        masterSlider.value = masterVol;
-        musicSlider.value = musicVol;
-        sfxSlider.value = sfxVol;
+        soundVolumeView.masterSlider.value = masterVol;
+        soundVolumeView.musicSlider.value = musicVol;
+        soundVolumeView.sfxSlider.value = sfxVol;
     }
 
-    private void SaveVolume()
+    public void SaveVolume()
     {
-        PlayerPrefsData.Set("MasterVol", masterSlider.value);
-        PlayerPrefsData.Set("MusicVol", musicSlider.value);
-        PlayerPrefsData.Set("SFXVol", sfxSlider.value);
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveVolume();
+        PlayerPrefsData.Set("MasterVol", soundVolumeView.masterSlider.value);
+        PlayerPrefsData.Set("MusicVol", soundVolumeView.musicSlider.value);
+        PlayerPrefsData.Set("SFXVol", soundVolumeView.sfxSlider.value);
     }
 }

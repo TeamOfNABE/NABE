@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class TabPopup : Popup
 {
-    
+    public override void OK()
+    {
+        
+    }
 }

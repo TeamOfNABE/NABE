@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class QuickPopup : Popup
 {
-    
+    public override void OK()
+    {
+        
+    }
 }

@@ -17,17 +17,24 @@ public enum PopupEffectType
 }
 
 [RequireComponent(typeof(CanvasGroup))]
-public class Popup : MonoBehaviour
+abstract public class Popup : MonoBehaviour
 {
     private RectTransform rect;
     private CanvasGroup canvasGroup;
+    public PopupType popupType { get; set; }
     public PopupEffectType popupEffectType;
+
+    public bool isClose { get; set; } = false;
 
     [Tooltip("체크 시 배경 딤드처리(배경 클릭 Off)")] public bool isDimmed = true;
     private string dimmedPath = "Prefabs/UI/Popup/Dimmed";
     
-
-    private void Awake()
+    /// <summary>
+    /// UI Open Popup Animation
+    /// </summary>
+    abstract public void OK();
+    
+    public virtual void Awake()
     {
         // Get Reference
         rect = GetComponent<RectTransform>();
