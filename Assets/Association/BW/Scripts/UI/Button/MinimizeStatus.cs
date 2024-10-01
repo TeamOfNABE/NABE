@@ -34,6 +34,7 @@ public class MinimizeStatus : UIButton, IMinimizeToggle
     public override void OnClick(PointerEventData eventData)
     {
         minimizetTarget.DOKill();
+        image.transform.DOKill();
         foreach (var item in invisibleCanvasGroup) item.DOKill();
 
         if (isMinimize) Maximize();
@@ -43,6 +44,7 @@ public class MinimizeStatus : UIButton, IMinimizeToggle
     public void Maximize()
     {
         DOTween.To(() => minimizetTarget.rect.height, x => minimizetTarget.sizeDelta = new Vector2(0, x), originalSize.y, minimizeTime);
+        image.transform.DOScaleY(1f, minimizeTime / 2).SetDelay(minimizeTime);
         foreach (var item in invisibleCanvasGroup) {
             item.DOFade(1f, minimizeTime);
         }
@@ -53,6 +55,7 @@ public class MinimizeStatus : UIButton, IMinimizeToggle
     public void Minimize()
     {
         DOTween.To(() => minimizetTarget.rect.height, x => minimizetTarget.sizeDelta = new Vector2(0, x), originalSize.y - hideTarget.sizeDelta.y, minimizeTime);
+        image.transform.DOScaleY(-1f, minimizeTime / 2).SetDelay(minimizeTime / 2);
         foreach (var item in invisibleCanvasGroup) {
             item.DOFade(0f, minimizeTime);
         }

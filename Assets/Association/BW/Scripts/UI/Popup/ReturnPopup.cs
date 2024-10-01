@@ -11,9 +11,7 @@ public class ReturnPopup : UIButton
     {
         if (isClicked) return;
 
-        Dimmed dimmed = this.GetComponentInParent<Dimmed>();
         Popup popup = this.GetComponentInParent<Popup>();
-        if (dimmed != null) { popup.ClosePopup(() => Destroy(dimmed.gameObject)); }
-        else { popup.ClosePopup(() => Destroy(popup.gameObject)); }
+        PopupManager.instance.Close(popup);
     }
 }

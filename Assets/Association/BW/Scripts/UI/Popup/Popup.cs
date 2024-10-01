@@ -30,8 +30,6 @@ public class Popup : MonoBehaviour
     {
         // Get Reference
         rect = GetComponent<RectTransform>();
-        rect.SetParent(MainCanvas.instance.transform, false);
-
         canvasGroup = GetComponent<CanvasGroup>();
 
         // Setting Dimmed
@@ -65,8 +63,9 @@ public class Popup : MonoBehaviour
     /// </summary>
     private void SettingDimmed()
     {
-        Dimmed dimmed = Instantiate(Resources.Load<Dimmed>(dimmedPath), MainCanvas.instance.transform, false);
+        Dimmed dimmed = Instantiate(Resources.Load<Dimmed>(dimmedPath), this.transform.parent, false);
         this.transform.SetParent(dimmed.transform, false);
+        dimmed.name = "Dimmed_" + this.gameObject.name;
     }
 
     /// <summary>
@@ -113,9 +112,14 @@ public class Popup : MonoBehaviour
     // Scale Close
     private void CloseScaleAnimation(Ease ease, Action closeCompleteAction = null)
     {
+        Dimmed dimmed = this.GetComponentInParent<Dimmed>();
+
         DOTween.Kill(rect);
-        rect.DOScale(0.1f, .5f).SetEase(ease)
-            .OnComplete(() => { rect.localScale = Vector2.zero;  closeCompleteAction?.Invoke(); });
+        rect.DOScale(0.1f, .5f).SetEase(ease).OnComplete(() => { 
+                rect.localScale = Vector2.zero;  
+                closeCompleteAction?.Invoke();
+                Destroy(dimmed? dimmed.gameObject : this.gameObject);
+            });
     }
 
     // Move Open
@@ -142,6 +146,8 @@ public class Popup : MonoBehaviour
     // Move Close
     private void CloseMoveAnimation(PopupEffectType direction, Ease ease, Action closeCompleteAction = null)
     {
+        Dimmed dimmed = this.GetComponentInParent<Dimmed>();
+
         DOTween.Kill(rect);
         DOTween.Kill(canvasGroup);
         Sequence sequence = DOTween.Sequence();
@@ -161,6 +167,9 @@ public class Popup : MonoBehaviour
                 break;
         }
         sequence.Join(canvasGroup.DOFade(0f, .5f));
-        sequence.OnComplete(() => { closeCompleteAction?.Invoke(); });
+        sequence.OnComplete(() => { 
+            closeCompleteAction?.Invoke();
+            Destroy(dimmed? dimmed.gameObject : this.gameObject);
+        });
     }
 }

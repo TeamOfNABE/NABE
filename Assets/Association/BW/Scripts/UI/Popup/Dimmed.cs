@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Dimmed : UIButton
 {
@@ -21,6 +20,6 @@ public class Dimmed : UIButton
         if (isClicked) return;
 
         Popup popup = this.GetComponentInChildren<Popup>();
-        popup.ClosePopup(() => Destroy(this.gameObject));
+        PopupManager.instance.Close(popup);
     }
 }

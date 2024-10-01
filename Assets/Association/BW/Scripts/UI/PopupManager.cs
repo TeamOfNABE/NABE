@@ -14,16 +14,24 @@ public enum PopupType
 
 public class PopupManager : MonoSingleton<PopupManager>
 {
-    private string popupResourcesPath = "Prefabs/UI/Popup/";
-    public List<Popup> popupList = new List<Popup>();
+    [SerializeField, ReadOnly(true)] private Canvas popupCanvas;
+    [SerializeField, ReadOnly] private string popupResourcesPath = "Prefabs/UI/Popup/";
+    [SerializeField, ReadOnly] private List<Popup> popupList = new List<Popup>();
 
     public void Open(PopupType popupType)
     {
         if (popupType == PopupType.Null) return;
 
-        var popup = Instantiate(Resources.Load<Popup>(popupResourcesPath + popupType));
+        var popup = Instantiate(Resources.Load<Popup>(popupResourcesPath + popupType), popupCanvas.transform, false);
         popupList.Add(popup);
 
         popup.OpenPopup();
+    }
+
+    public void Close(Popup popup)
+    {
+        popupList.Remove(popup);
+
+        popup.ClosePopup();
     }
 }

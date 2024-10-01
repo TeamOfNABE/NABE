@@ -39,6 +39,7 @@ public class MinimizeQuick : UIButton, IMinimizeToggle
     public void Maximize()
     {
         minimizetTarget.DOKill();
+        image.transform.DOKill();
 
         minimizetTarget.DOSizeDelta(originalSize, minimizeTime);
         image.transform.DOScaleY(1f, minimizeTime / 2).SetDelay(minimizeTime);
@@ -50,6 +51,7 @@ public class MinimizeQuick : UIButton, IMinimizeToggle
     public void Minimize()
     {
         minimizetTarget.DOKill();
+        image.transform.DOKill();
         
         minimizetTarget.DOSizeDelta(minimizeSize, minimizeTime).SetEase(Ease.OutBack);
         image.transform.DOScaleY(-1f, minimizeTime / 2).SetDelay(minimizeTime / 2);
