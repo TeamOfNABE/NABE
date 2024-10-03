@@ -3480,7 +3480,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.375
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12072,16 +12072,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <accelButton>k__BackingField: {fileID: 1358557108}
   <roundText>k__BackingField: {fileID: 722816809}
-  <roundSlider>k__BackingField: {fileID: 4799027247994825946}
-  <roundPoints>k__BackingField:
-  - {fileID: 8989097182596742812}
-  - {fileID: 7845088682847988171}
-  - {fileID: 8837557033401495057}
-  - {fileID: 4637802741785375118}
-  - {fileID: 5943242323320155}
-  <timerSlider>k__BackingField: {fileID: 330032753}
-  <timerText>k__BackingField: {fileID: 1512037497}
+  <roundSlider>k__BackingField: {fileID: 4799027247994825952}
   <bossButton>k__BackingField: {fileID: 1294409014}
+  <roundTimer>k__BackingField: {fileID: 1434284461}
 --- !u!1 &1213488882
 GameObject:
   m_ObjectHideFlags: 0
@@ -13793,8 +13786,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1434284458}
   - component: {fileID: 1434284460}
+  - component: {fileID: 1434284461}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: RoundTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13830,6 +13824,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434284457}
   m_CullTransparentMesh: 1
+--- !u!114 &1434284461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434284457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e42c1d14f689c948bec54a7f00fac6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <timerSlider>k__BackingField: {fileID: 330032753}
+  <timerText>k__BackingField: {fileID: 1512037497}
 --- !u!1 &1436888016
 GameObject:
   m_ObjectHideFlags: 0
@@ -14495,7 +14503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99:99
+  m_text: '00 : 00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c501bcb5d50415b4c92a8d1caf1ccfcf, type: 2}
   m_sharedMaterial: {fileID: -1588487193244993593, guid: c501bcb5d50415b4c92a8d1caf1ccfcf, type: 2}
@@ -20157,7 +20165,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 4
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20172,6 +20180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4799027247994825944}
   - component: {fileID: 4799027247994825946}
+  - component: {fileID: 4799027247994825952}
   m_Layer: 5
   m_Name: RoundSlider
   m_TagString: Untagged
@@ -20179,6 +20188,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4799027247994825952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799027247994825951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cc6c37cff533a43bafd70e67cce8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <roundSlider>k__BackingField: {fileID: 4799027247994825946}
+  <roundPoints>k__BackingField:
+  - {fileID: 8989097182596742812}
+  - {fileID: 7845088682847988171}
+  - {fileID: 8837557033401495057}
+  - {fileID: 4637802741785375118}
+  - {fileID: 5943242323320155}
+  changePointOffset: 0.1
 --- !u!1 &4799027248035498600
 GameObject:
   m_ObjectHideFlags: 0
