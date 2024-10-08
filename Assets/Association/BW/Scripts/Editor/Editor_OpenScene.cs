@@ -4,14 +4,17 @@ using UnityEditor.SceneManagement;
 
 public class Editor_OpenScene : EditorWindow
 {
-	[MenuItem("Editor/OpenScene/0. Login")]
+	[MenuItem("Editor/OpenScene/0. TestingScene")]
 	static void Scene_0() => SceneOpen(0);
 
-	[MenuItem("Editor/OpenScene/1. Loading")]
+	[MenuItem("Editor/OpenScene/1. Login")]
 	static void Scene_1() => SceneOpen(1);
 
-	[MenuItem("Editor/OpenScene/2. Main")]
+	[MenuItem("Editor/OpenScene/2. Loading")]
 	static void Scene_2() => SceneOpen(2);
+
+	[MenuItem("Editor/OpenScene/3. Main")]
+	static void Scene_3() => SceneOpen(3);
 
 	static public void SceneOpen(int SceneIndex)
 	{
