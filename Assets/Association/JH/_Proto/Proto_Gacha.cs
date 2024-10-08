@@ -38,6 +38,7 @@ public class Proto_Gacha : MonoBehaviour
 [Serializable]
 public class ToggleCmdUnit
 {
+    public string name;
     public List<GameObject> _goList;
     public UnityEvent _event;
 
