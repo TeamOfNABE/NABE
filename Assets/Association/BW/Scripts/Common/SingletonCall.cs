@@ -10,6 +10,10 @@ public class SingletonCall : MonoBehaviour
         PopupManager.instance.Call();
         //OptionPopup.instance.Call();
         //FadePopup.instance.Call();
+    }
+
+    private void Start()
+    {
         Destroy(this.gameObject);
     }
 }
