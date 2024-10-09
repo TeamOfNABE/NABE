@@ -12,3 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ef78b6bcd88fc4aa439e5b78e73511, type: 3}
   m_Name: FloatArrayData
   m_EditorClassIdentifier: 
+  TargetData:
+  - 1
+  - 2
+  - 3
+  - 4
+  NormalizeForm:
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  SnowballForm:
+  - 0.1
+  - 0.3
+  - 0.6
+  - 1

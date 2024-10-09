@@ -2,7 +2,6 @@
 
 public enum SceneName
 {
-	TestingScene,
 	Login,
 	Loading,
 	Main,

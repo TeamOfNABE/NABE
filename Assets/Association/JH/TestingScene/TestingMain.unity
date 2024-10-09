@@ -122,6 +122,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12681103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 12681105}
+  - component: {fileID: 12681104}
+  m_Layer: 0
+  m_Name: EventScenarioHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &12681104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12681103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e6c0a8ce2aeb945a941337dee7abf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentIndex: 0
+  toggleList:
+  - name: GachaProcess, Add Inven
+    _goList: []
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 913025231}
+          m_TargetAssemblyTypeName: GachaDataManager, Assembly-CSharp
+          m_MethodName: InteractGacha
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+        - m_Target: {fileID: 913025231}
+          m_TargetAssemblyTypeName: GachaDataManager, Assembly-CSharp
+          m_MethodName: MergeItem_byCards
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
+  cmdCount: 5
+--- !u!4 &12681105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12681103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 413.6627, y: 1369.8243, z: -2.5809758}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &32069842
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &161701395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,7 +1335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &588207285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1917,7 @@ GameObject:
   - component: {fileID: 913025232}
   - component: {fileID: 913025231}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GachaScenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1859,7 +1935,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4226953fd1ef973408c7c735b6a6438c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tableData: {fileID: 11400000, guid: bd212fed4b0b21344a723946b5a5e835, type: 2}
+  data:
+    ResultName: ApplyResult
+    rtnIndex: 3
+  myData:
+    table: {fileID: 11400000, guid: bd212fed4b0b21344a723946b5a5e835, type: 2}
+    gachaStoreLevel: 0
+    gachaCombo: 40
+    feverPer: 0
+    _cardData: 03000000
+  myItems: []
 --- !u!4 &913025232
 Transform:
   m_ObjectHideFlags: 0
@@ -4109,3 +4194,4 @@ SceneRoots:
   - {fileID: 1866156746}
   - {fileID: 1336229364}
   - {fileID: 913025232}
+  - {fileID: 12681105}
