@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978c523d52ac567459e3901785190ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupEffectType: 0
+  popupEffectType: 1
   isDimmed: 1
 --- !u!225 &5983356610235969041
 CanvasGroup:

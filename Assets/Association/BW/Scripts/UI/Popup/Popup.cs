@@ -6,8 +6,11 @@ using System;
 
 public enum PopupEffectType
 {
+    // None
+    None,   // 이펙트 없음
+
     // Scale
-    Defualt, // 기본 확장 팝업
+    ScaleUp, // 확장 팝업
 
     // Move
     UpToDown, // 위에서 아래로 내려오는 팝업
@@ -21,10 +24,7 @@ abstract public class Popup : MonoBehaviour
 {
     private RectTransform rect;
     private CanvasGroup canvasGroup;
-    public PopupType popupType { get; set; }
     public PopupEffectType popupEffectType;
-
-    public bool isClose { get; set; } = false;
 
     [Tooltip("체크 시 배경 딤드처리(배경 클릭 Off)")] public bool isDimmed = true;
     private string dimmedPath = "Prefabs/UI/Popup/Dimmed";
@@ -44,7 +44,10 @@ abstract public class Popup : MonoBehaviour
         if (isDimmed) SettingDimmed();
 
         // Setting UI Animation
-        if (popupEffectType <= PopupEffectType.Defualt) { // Scalse To Zero
+        if (popupEffectType <= PopupEffectType.None) { // Null
+            
+        }
+        else if (popupEffectType <= PopupEffectType.ScaleUp) { // Scalse To Zero
             rect.localScale = Vector2.zero;
         }
         else if (popupEffectType <= PopupEffectType.RightToLeft) { // Move To Out Of Sight
@@ -102,13 +105,35 @@ abstract public class Popup : MonoBehaviour
                 else { CloseMoveAnimation(popupEffectType, Ease.OutQuad, openCompleteAction); }
                 break;
             // Scale
-            default : // PopupEffectType.Defualt
+            case >= PopupEffectType.ScaleUp :
                 if (isOpen) { OpenScaleAnimation(Ease.OutBack, openCompleteAction); }
                 else { CloseScaleAnimation(Ease.InBack, openCompleteAction); }
+                break;
+            // None
+            default :
+                if (isOpen) { Open(openCompleteAction); }
+                else { Close(openCompleteAction); }
                 break;
         }
     }
 
+#region None
+    // Scale Open
+    private void Open(Action openCompleteAction = null)
+    {
+        openCompleteAction?.Invoke();
+    }
+
+    // Scale Close
+    private void Close(Action closeCompleteAction = null)
+    {
+        Dimmed dimmed = this.GetComponentInParent<Dimmed>();
+        closeCompleteAction?.Invoke();
+        Destroy(dimmed? dimmed.gameObject : this.gameObject);
+    }
+#endregion
+
+#region Scale
     // Scale Open
     private void OpenScaleAnimation(Ease ease, Action openCompleteAction = null)
     {
@@ -130,7 +155,9 @@ abstract public class Popup : MonoBehaviour
                 Destroy(dimmed? dimmed.gameObject : this.gameObject);
             });
     }
+#endregion
 
+#region Move
     // Move Open
     private void OpenMoveAnimation(PopupEffectType direction, Ease ease, Action openCompleteAction = null)
     {
@@ -181,4 +208,5 @@ abstract public class Popup : MonoBehaviour
             Destroy(dimmed? dimmed.gameObject : this.gameObject);
         });
     }
+#endregion
 }

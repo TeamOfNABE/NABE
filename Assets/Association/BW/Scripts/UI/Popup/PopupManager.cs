@@ -1,47 +1,98 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public enum PopupType
-{
-    Null,
-    VariablePopup, // 기본 팝업 (제목, 내용, 취소, 확인)
-    QuickPopup, // 프로필 좌측 퀵 팝업
-    ProfilePopup, // 프로필 팝업
-    SettingPopup, // 설정창 (사운드, 등등)
-    FadePopup, // Fade In, Out
-    TabPopup,
-}
 
 public class PopupManager : MonoSingleton<PopupManager>
 {
     [SerializeField, ReadOnly(true)] private Canvas popupCanvas;
     [SerializeField, ReadOnly] private string popupResourcesPath = "Prefabs/UI/Popup/";
-    [SerializeField, ReadOnly] private List<PopupType> popupTypeList = new List<PopupType>();
+    [SerializeField, ReadOnly] private SerializedDictionary<string, Popup> popupDictionary = new SerializedDictionary<string, Popup>();
 
-    public void Open(PopupType popupType)
+    /// <summary>
+    /// ex) PopupManager.instance.Open<Popup>();
+    /// 팝업 클래스로 호출 시
+    /// </summary>
+    public T Open<T>() where T : Popup
     {
-        if (popupType == PopupType.Null) return;
-        if (popupTypeList.Contains(popupType)) return;
+        string key = typeof(T).ToString();
 
-        var popup = Instantiate(Resources.Load<Popup>(popupResourcesPath + popupType), popupCanvas.transform, false);
-        popup.popupType = popupType;
+        if (popupDictionary.TryGetValue(key, out Popup value)) return (T)value;
 
-        popupTypeList.Add(popupType);
+        value = Instantiate(Resources.Load<Popup>(popupResourcesPath + key), popupCanvas.transform, false);
+
+        popupDictionary.Add(key, value);
+
+        return (T)value;
     }
 
-    public void Close(Popup popup)
+    /// <summary>
+    /// ex) PopupManager.instance.Open(Popup);
+    /// 팝업  호출 시
+    /// </summary>
+    public T Open<T>(T popup) where T : Popup
     {
-        popupTypeList.Remove(popup.popupType);
+        if (popup == null) return null;
 
-        popup.ClosePopup();
+        string key = popup.GetType().ToString();
+
+        if (popupDictionary.TryGetValue(key, out Popup value)) return (T)value;
+
+        value = Instantiate(Resources.Load<Popup>(popupResourcesPath + key), popupCanvas.transform, false);
+
+        popupDictionary.Add(key, value);
+
+        return (T)value;
     }
 
+    /// <summary>
+    /// ex) PopupManager.instance.Close<Popup>();
+    /// 팝업 클래스로 호출 시
+    /// </summary>
+    public void Close<T>() where T : Popup
+    {
+        string key = typeof(T).ToString();
+
+        if (!popupDictionary.TryGetValue(key, out Popup value)) return;
+
+        popupDictionary.Remove(key);
+
+        value.ClosePopup();
+    }
+
+    /// <summary>
+    /// ex) PopupManager.instance.Close(Popup);
+    /// 팝업 오브젝트로 호출 시
+    /// </summary>
+    public void Close<T>(T popup) where T : Popup
+    {
+        string key = popup.GetType().ToString();
+
+        if (!popupDictionary.TryGetValue(key, out Popup value)) return;
+
+        popupDictionary.Remove(key);
+
+        value.ClosePopup();
+    }
+
+    /// <summary>
+    /// Setting -> Close
+    /// </summary>
     public void OK(Popup popup)
     {
         popup.OK();
 
         Close(popup);
+    }
+
+    /// <summary>
+    /// 알림 팝업
+    /// </summary>
+    public void Popup(string title, string msg, Action ok = null, Action calnel = null)
+    {
+        var variablePopup = Open<VariablePopup>();
+        variablePopup.Setting(title, msg, ok, calnel);
     }
 }

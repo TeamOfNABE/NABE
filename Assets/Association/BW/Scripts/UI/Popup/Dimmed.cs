@@ -15,10 +15,6 @@ public class Dimmed : UIButton
         if (results[0].gameObject != this.gameObject) return;
 
         Popup popup = this.GetComponentInChildren<Popup>();
-
-        if (popup.isClose) return;
-        popup.isClose = true;
-        
         PopupManager.instance.Close(popup);
     }
 }

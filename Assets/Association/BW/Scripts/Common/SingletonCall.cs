@@ -8,8 +8,6 @@ public class SingletonCall : MonoBehaviour
     {
         SoundManager.instance.Call();
         PopupManager.instance.Call();
-        //OptionPopup.instance.Call();
-        //FadePopup.instance.Call();
     }
 
     private void Start()

@@ -7,8 +7,8 @@ using System;
 
 public class UIPopup : UIItem
 {
-    public bool isPointerSizeUp = true;
-    public PopupType popupType;
+    [SerializeField] private bool isPointerSizeUp = true;
+    [SerializeField] private Popup popup;
 
     public override void OnEnter(PointerEventData eventData)
     {
@@ -28,6 +28,6 @@ public class UIPopup : UIItem
 
     public override void OnClick(PointerEventData eventData)
     {
-        PopupManager.instance.Open(popupType);
+        PopupManager.instance.Open(popup);
     }
 }

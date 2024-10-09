@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &123663032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &136444815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &151526297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &161701395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &195265893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,7 +2655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &233653391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &233653396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,7 +2763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &258652644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,7 +3064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &271953352
 GameObject:
   m_ObjectHideFlags: 0
@@ -4337,7 +4337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &405863564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4700,7 +4700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &420334021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4792,7 +4792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &424769148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4885,7 +4885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &424769153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4900,7 +4900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &449411564
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,7 +5481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &482913224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5949,7 +5949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &502857077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5964,7 +5964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &503750963
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,7 +6781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &572400174
 GameObject:
   m_ObjectHideFlags: 0
@@ -6835,7 +6835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &572400177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7130,7 +7130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &631157339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7511,7 +7511,7 @@ Canvas:
   m_GameObject: {fileID: 666612850}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -7744,7 +7744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &696349087
 GameObject:
   m_ObjectHideFlags: 0
@@ -7836,7 +7836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &697626435
 GameObject:
   m_ObjectHideFlags: 0
@@ -7928,7 +7928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &704975279
 GameObject:
   m_ObjectHideFlags: 0
@@ -8038,7 +8038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 0
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &717729470
 GameObject:
   m_ObjectHideFlags: 0
@@ -8520,7 +8520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &752024191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8535,7 +8535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &765875735
 GameObject:
   m_ObjectHideFlags: 0
@@ -9942,7 +9942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &895920392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9957,7 +9957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &905756698
 GameObject:
   m_ObjectHideFlags: 0
@@ -10228,7 +10228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 6
+  popup: {fileID: 5872897349263581338, guid: bfdd67f294a47f145bb5e0c481a59521, type: 3}
 --- !u!1 &1004347754
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,7 +10624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &1039704956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10639,7 +10639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1062793054
 GameObject:
   m_ObjectHideFlags: 0
@@ -11049,8 +11049,8 @@ GameObject:
   - component: {fileID: 1085937563}
   - component: {fileID: 1085937565}
   - component: {fileID: 1085937564}
-  - component: {fileID: 1085937567}
   - component: {fileID: 1085937566}
+  - component: {fileID: 1085937567}
   m_Layer: 5
   m_Name: ProfilePanel
   m_TagString: Untagged
@@ -11151,7 +11151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 2
+  popup: {fileID: -4094049161761853925, guid: 9c0c2840c87f2fe44a9bf1fec4736520, type: 3}
 --- !u!1 &1117775463
 GameObject:
   m_ObjectHideFlags: 0
@@ -11900,7 +11900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1204232828
 GameObject:
   m_ObjectHideFlags: 0
@@ -12167,7 +12167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &1213488887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12182,7 +12182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1215074720
 GameObject:
   m_ObjectHideFlags: 0
@@ -12236,7 +12236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &1215074723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12604,7 +12604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1247224383
 GameObject:
   m_ObjectHideFlags: 0
@@ -14147,7 +14147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1467572345
 GameObject:
   m_ObjectHideFlags: 0
@@ -14374,7 +14374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &1480396018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14389,7 +14389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1493513434
 GameObject:
   m_ObjectHideFlags: 0
@@ -14441,7 +14441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <snail>k__BackingField: {fileID: 694860126}
-  <inventory>k__BackingField: {fileID: 964544283}
+  <inventory>k__BackingField: {fileID: 0}
   <promotion>k__BackingField: {fileID: 1215074722}
   <stat>k__BackingField: {fileID: 631157338}
   <preset>k__BackingField: {fileID: 572400176}
@@ -15309,7 +15309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1573255403
 GameObject:
   m_ObjectHideFlags: 0
@@ -16906,7 +16906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1795323611
 GameObject:
   m_ObjectHideFlags: 0
@@ -17165,7 +17165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1822546800
 GameObject:
   m_ObjectHideFlags: 0
@@ -18057,7 +18057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!114 &1964423014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18072,7 +18072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1974054430
 GameObject:
   m_ObjectHideFlags: 0
@@ -18274,7 +18274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &1990531612
 GameObject:
   m_ObjectHideFlags: 0
@@ -19471,7 +19471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   isPointerSizeUp: 1
-  popupType: 0
+  popup: {fileID: 0}
 --- !u!1 &2128153115
 GameObject:
   m_ObjectHideFlags: 0
