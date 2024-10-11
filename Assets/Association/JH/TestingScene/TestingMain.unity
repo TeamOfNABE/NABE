@@ -182,7 +182,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
-  cmdCount: 5
+  cmdCount: 2
 --- !u!4 &12681105
 Transform:
   m_ObjectHideFlags: 0
@@ -1935,15 +1935,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4226953fd1ef973408c7c735b6a6438c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    ResultName: ApplyResult
-    rtnIndex: 3
-  myData:
+  factoryData:
     table: {fileID: 11400000, guid: bd212fed4b0b21344a723946b5a5e835, type: 2}
     gachaStoreLevel: 0
-    gachaCombo: 40
-    feverPer: 0
-    _cardData: 03000000
+    gachaCombo: 15
+    percent_Gacha: 0
+    _cardData: 01000000
+    isStored: 0
+  insData_Debug:
+    ResultName: sad
+    rtnIndex: 0
   myItems: []
 --- !u!4 &913025232
 Transform:
@@ -4188,10 +4189,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 457844311}
   - {fileID: 666612854}
   - {fileID: 1782336176}
   - {fileID: 1866156746}
   - {fileID: 1336229364}
+  - {fileID: 457844311}
   - {fileID: 913025232}
   - {fileID: 12681105}

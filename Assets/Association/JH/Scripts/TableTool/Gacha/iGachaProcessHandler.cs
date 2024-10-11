@@ -1,9 +1,9 @@
+using ExecuteGacha_FuncSet;
+
 public interface iGachaProcessHandler<GachaDataClass, ResultDataClass>
 {
     // 본인 데이터 ( class로 데이터 따로관리 고민중 )
-    GachaDataClass myData { get; }
-
-    ResultDataClass ResultData { get; }
+    GachaDataClass factoryData { get; }
 
     // 유효성검사 ( 소모 자원 존재라던가 )
     bool AvailableCheck();
@@ -25,11 +25,11 @@ public interface iGachaProcessHandler<GachaDataClass, ResultDataClass>
     void NotAvailableAction();
 
     // 가챠 결과 action
-    void SuccessAction(ResultDataClass _ReturnData);
+    void SuccessAction_GUI(ResultDataClass _ReturnData);
 
 
     // 가챠 진행
-    public void ExcuteGacha()
+    public void ExecuteGacha()
     {
         if (!AvailableCheck())
         {
@@ -37,8 +37,8 @@ public interface iGachaProcessHandler<GachaDataClass, ResultDataClass>
             return;
         }
 
-        float[] target = GetTargetTable(myData);
-        int resultIndex = target.ExcuteTable();
+        float[] target = GetTargetTable(factoryData);
+        int resultIndex = target.ExecuteTable();
         ResultDataClass resultData = SetReturnData(resultIndex);
 
         if (AvailableCheck())
@@ -46,7 +46,7 @@ public interface iGachaProcessHandler<GachaDataClass, ResultDataClass>
             SetTicketDelta();
             ApplyResult(resultData);
 
-            SuccessAction(resultData);
+            SuccessAction_GUI(resultData);
             return;
         }
         else
