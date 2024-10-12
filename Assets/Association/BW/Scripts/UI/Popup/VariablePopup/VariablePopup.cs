@@ -6,20 +6,25 @@ using UnityEngine;
 
 public class VariablePopup : Popup
 {
+    [Space(10f)]
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text msgText;
+    [Space(10f)]
     [SerializeField] private UIItem okButton;
     [SerializeField] private UIItem cancelButton;
+    [Space(10f)]
+    [SerializeField] private TMP_Text okText;
+    [SerializeField] private TMP_Text cancelText;
 
-    public void Setting(string title, string msg, Action ok, Action calnel = null)
+    public void Setting(string titleText, string msgText, Action ok, Action calnel, string okText, string cancelText)
     {
-        this.titleText.text = title;
-        this.msgText.text = msg;
+        this.titleText.text = titleText;
+        this.msgText.text = msgText;
+
         this.okButton.AddEvent(() => ok?.Invoke());
         this.cancelButton.AddEvent(() => calnel?.Invoke());
-    }
-    public override void OK()
-    {
-        // Setting에서 Action 동적 할당
+
+        if (okText != "") this.okText.text = okText;
+        if (cancelText != "") this.cancelText.text = cancelText;
     }
 }

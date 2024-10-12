@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 6512561729224651423}
   - component: {fileID: 3895040966597987385}
   m_Layer: 5
-  m_Name: CancelButton
+  m_Name: PopupReturn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -130, y: 50}
+  m_AnchoredPosition: {x: 130, y: 50}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3835960515617652463
@@ -569,8 +569,8 @@ RectTransform:
   - {fileID: 1794452569609359800}
   - {fileID: 3380834756173323674}
   - {fileID: 2732123981040443783}
-  - {fileID: 8873807646037384075}
   - {fileID: 3794525241569405871}
+  - {fileID: 8873807646037384075}
   m_Father: {fileID: 2800381031807435372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 435133460545412091}
   - component: {fileID: 4867350352171623574}
   - component: {fileID: 3168418628815982921}
-  - component: {fileID: 8451547120619829019}
+  - component: {fileID: 7490019882692254635}
   m_Layer: 5
   m_Name: OkButton
   m_TagString: Untagged
@@ -930,7 +930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 130, y: 50}
+  m_AnchoredPosition: {x: -130, y: 50}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &435133460545412091
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &8451547120619829019
+--- !u!114 &7490019882692254635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6791530830998943833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e75a1c347db8e48b40843c8e881e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 88d2dc2e003e8c940894322c7afcd2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
@@ -1136,7 +1136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupEffectType: 1
   isDimmed: 1
+  isDimmedClose: 0
   titleText: {fileID: 3200822365031432033}
   msgText: {fileID: 2568556579867047091}
-  okButton: {fileID: 8451547120619829019}
+  okButton: {fileID: 7490019882692254635}
   cancelButton: {fileID: 3895040966597987385}
+  okText: {fileID: 1957594697467629866}
+  cancelText: {fileID: 5573196235230726184}

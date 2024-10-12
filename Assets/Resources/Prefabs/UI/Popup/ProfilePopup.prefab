@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 5874173511528759862}
   - component: {fileID: 2699994006717780536}
   m_Layer: 5
-  m_Name: ReturnButton
+  m_Name: PopupReturn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2285,6 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupEffectType: 1
   isDimmed: 0
+  isDimmedClose: 0
 --- !u!1 &6874966896054526331
 GameObject:
   m_ObjectHideFlags: 0

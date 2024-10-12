@@ -12,6 +12,38 @@ public class PopupManager : MonoSingleton<PopupManager>
     [SerializeField, ReadOnly] private SerializedDictionary<string, Popup> popupDictionary = new SerializedDictionary<string, Popup>();
 
     /// <summary>
+    /// 알림 팝업 (크기 가변)
+    /// </summary>
+    public VariablePopup Popup(string msgText)
+    {
+        return Popup("", msgText, null, null, "", "");
+    }
+    public VariablePopup Popup(string titleText, string msgText)
+    {
+        return Popup(titleText, msgText, null, null, "", "");
+    }
+    public VariablePopup Popup(string msgText, Action okAction)
+    {
+        return Popup("", msgText, okAction, null, "", "");
+    }
+    public VariablePopup Popup(string titleText, string msgText, Action okAction)
+    {
+        return Popup(titleText, msgText, okAction, null, "", "");
+    }
+    public VariablePopup Popup(string titleText, string msgText, Action okAction, string okText)
+    {
+        return Popup(titleText, msgText, okAction, null, okText, "");
+    }
+    public VariablePopup Popup(string titleText, string msgText, Action okAction, Action calnelAction, string okText, string cancelText)
+    {
+        var variablePopup = Open<VariablePopup>();
+        okAction += () => Close(variablePopup);
+        calnelAction += () => Close(variablePopup);
+        variablePopup.Setting(titleText, msgText, okAction, calnelAction, okText, cancelText);
+        return variablePopup;
+    }
+
+    /// <summary>
     /// ex) PopupManager.instance.Open<Popup>();
     /// 팝업 클래스로 호출 시
     /// </summary>
@@ -75,24 +107,5 @@ public class PopupManager : MonoSingleton<PopupManager>
         popupDictionary.Remove(key);
 
         value.ClosePopup();
-    }
-
-    /// <summary>
-    /// Setting -> Close
-    /// </summary>
-    public void OK(Popup popup)
-    {
-        popup.OK();
-
-        Close(popup);
-    }
-
-    /// <summary>
-    /// 알림 팝업
-    /// </summary>
-    public void Popup(string title, string msg, Action ok = null, Action calnel = null)
-    {
-        var variablePopup = Open<VariablePopup>();
-        variablePopup.Setting(title, msg, ok, calnel);
     }
 }

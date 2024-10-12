@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupEffectType: 0
   isDimmed: 0
+  isDimmedClose: 0
   maskImage: {fileID: 6675291933261714352}
   maskedImage: {fileID: 5077308735206139522}
   fadeSpeed: 1

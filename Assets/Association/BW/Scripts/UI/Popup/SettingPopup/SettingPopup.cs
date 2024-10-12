@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SettingPopup : Popup
 {
-    [SerializeField] private SettingView settingView;
+    [field : SerializeField] public TMP_Text titleText { get; private set; }
+    [field : SerializeField] public UIItem okButton { get; private set; }
+    
     [SerializeField] private SoundVolumeControl soundVolumeControl;
 
-    public override void OK()
+    private void Start()
     {
-        soundVolumeControl.SaveVolume();
+        okButton.AddEvent(() => soundVolumeControl.SaveVolume());
     }
 }

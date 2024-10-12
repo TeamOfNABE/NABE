@@ -451,7 +451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupEffectType: 1
   isDimmed: 1
-  settingView: {fileID: 2420486695142269941}
+  isDimmedClose: 0
+  <titleText>k__BackingField: {fileID: 2968408846040409051}
+  <okButton>k__BackingField: {fileID: 8438917703243612525}
   soundVolumeControl: {fileID: 718175286806459890}
 --- !u!1 &870727422138511823
 GameObject:
@@ -1013,8 +1015,8 @@ RectTransform:
   - {fileID: 6844875149653593531}
   - {fileID: 3823261700830268328}
   - {fileID: 3386327530191131664}
-  - {fileID: 3918206972391562642}
   - {fileID: 2129700466677321842}
+  - {fileID: 3918206972391562642}
   m_Father: {fileID: 4606983550673381126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1098,9 +1100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73b700ca0e27944b8f06cadbfa651ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <titleText>k__BackingField: {fileID: 2968408846040409051}
-  <cancelButton>k__BackingField: {fileID: 1660816069402678601}
-  <okButton>k__BackingField: {fileID: 4771620071754628228}
 --- !u!1 &3052951195902483513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,9 +1187,9 @@ GameObject:
   - component: {fileID: 8227697222110113268}
   - component: {fileID: 4008399901960609298}
   - component: {fileID: 4576434117000182137}
-  - component: {fileID: 1660816069402678601}
+  - component: {fileID: 894642340274816328}
   m_Layer: 5
-  m_Name: CancelButton
+  m_Name: PopupReturn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,7 +1212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -130, y: 50}
+  m_AnchoredPosition: {x: 130, y: 50}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8227697222110113268
@@ -1274,7 +1273,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &1660816069402678601
+--- !u!114 &894642340274816328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1754,7 +1753,7 @@ GameObject:
   - component: {fileID: 1543384473789970399}
   - component: {fileID: 2036448302982144907}
   - component: {fileID: 4947996710777883951}
-  - component: {fileID: 4771620071754628228}
+  - component: {fileID: 8438917703243612525}
   m_Layer: 5
   m_Name: OkButton
   m_TagString: Untagged
@@ -1779,7 +1778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 130, y: 50}
+  m_AnchoredPosition: {x: -130, y: 50}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1543384473789970399
@@ -1840,7 +1839,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &4771620071754628228
+--- !u!114 &8438917703243612525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1849,7 +1848,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4448236829321182583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e75a1c347db8e48b40843c8e881e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 88d2dc2e003e8c940894322c7afcd2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 0}

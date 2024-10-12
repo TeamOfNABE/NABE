@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class ProfilePopup : Popup
 {
-    public override void OK()
-    {
-        
-    }
+    
 }

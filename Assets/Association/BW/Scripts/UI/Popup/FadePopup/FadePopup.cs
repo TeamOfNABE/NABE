@@ -80,9 +80,4 @@ public class FadePopup : Popup
         }
         maskImage.gameObject.SetActive(false);
     }
-
-    public override void OK()
-    {
-        
-    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Cancel : UIButton
+public class PopupReturn : UIButton
 {
     public override void OnClick(PointerEventData eventData)
     {
