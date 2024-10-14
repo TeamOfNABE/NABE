@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PresentingGUI_Default : MonoBehaviour
+public class PresentingTool_Default : MonoBehaviour
 {
     [SerializeField] internal List<ManagningGUI_SingleSprite> myGUI_ProfileSprite;
 

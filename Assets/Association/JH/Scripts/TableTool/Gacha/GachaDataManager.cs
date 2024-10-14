@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class GachaDataManager : MonoBehaviour
 {
-    MyGachaHandler myGachaHandler;
-    public iGachaProcessHandler<FactoryData_ofGacha, ItemData_byGacha> mGH => myGachaHandler;
-    [SerializeField] FactoryData_ofGacha factoryData;
-    [SerializeField] ItemData_byGacha insData_Debug;
+    Handler_CardGacha _CardGachaHandler;  public iGachaProcessHandler<FactoryData_MainGacha, ProductData_CardGacha> gh_card => _CardGachaHandler;
+    Handler_EquipItemGacha _EquipItemGacha; public iGachaProcessHandler<FactoryData_MainGacha, ProductData_CardGacha> gh_equip => _CardGachaHandler;
+
+    [SerializeField] FactoryData_MainGacha factoryData;
 
     [Space(10)]
-    [SerializeField] public List<GachaData_ItemUnit> myItems;
+    [SerializeField] public List<ProductData_EquipItem> myItems;
 
     [ContextMenu("InteractGacha")]
     public void InteractGacha()
     {
-        ItemData_byGacha insData = new();
-        myGachaHandler = new(factoryData, insData);
-        mGH.ExecuteGacha();
+        ProductData_CardGacha insData = new();
+        _CardGachaHandler = new(factoryData, insData);
+        gh_card.ExecuteGacha();
+        _CardGachaHandler = null;
     }
 
 
@@ -27,10 +28,9 @@ public class GachaDataManager : MonoBehaviour
         if (factoryData._cardData.Count < 3)
             return;
 
-        GachaData_ItemUnit temp = new GachaData_ItemUnit(factoryData);
+        ProductData_EquipItem temp = new ProductData_EquipItem(factoryData);
         myItems.Add(temp);
         factoryData.AddFeverPercent_byCreateItem(temp);
-
 
         factoryData._cardData.Clear();
     }

@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &12681104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
-  cmdCount: 2
+  cmdCount: 1
 --- !u!4 &12681105
 Transform:
   m_ObjectHideFlags: 0
@@ -195,7 +195,9 @@ Transform:
   m_LocalPosition: {x: 413.6627, y: 1369.8243, z: -2.5809758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 913025232}
+  - {fileID: 1303902981}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &32069842
@@ -1936,16 +1938,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factoryData:
-    table: {fileID: 11400000, guid: bd212fed4b0b21344a723946b5a5e835, type: 2}
+    _fReader: {fileID: 11400000, guid: d1db4db139a0684419ea3ff7b6dec019, type: 2}
     gachaStoreLevel: 0
     gachaCombo: 15
     percent_Gacha: 0
-    _cardData: 01000000
-    isStored: 0
-  insData_Debug:
-    ResultName: sad
-    rtnIndex: 0
-  myItems: []
+    _cardData: 03000000
+    isStored: 1
+  myItems:
+  - _cardData: {x: 2, y: 3, z: 3}
+    _GachaStoreLevel: 0
+    _isFever: 0
 --- !u!4 &913025232
 Transform:
   m_ObjectHideFlags: 0
@@ -1954,12 +1956,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913025230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.83646, y: 916.8655, z: -11.322967}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 12681105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070115025
 GameObject:
@@ -2417,6 +2419,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278868719}
   m_CullTransparentMesh: 1
+--- !u!1 &1303902980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1303902981}
+  - component: {fileID: 1303902982}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1303902981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303902980}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 12681105}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303902982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303902980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb2592524e0410408312d6bdde44ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1307045096
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2639,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336229360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bdc4e537cccd2e49bc59b7d95867964, type: 3}
+  m_Script: {fileID: 11500000, guid: e0479e28cf93cbd409e9b3bc588d2410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myGUI_ProfileSprite:
@@ -4194,5 +4240,4 @@ SceneRoots:
   - {fileID: 1866156746}
   - {fileID: 1336229364}
   - {fileID: 457844311}
-  - {fileID: 913025232}
   - {fileID: 12681105}
