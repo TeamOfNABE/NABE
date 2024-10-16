@@ -51,12 +51,11 @@ public class SoundVolumeControl : MonoBehaviour
     private void SetUse(AudioType type, Toggle toggle, Slider slider, bool value)
     {
         // Set Toggle
-        slider.SetValueWithoutNotify(GetVolume(type));
-        SetAudioMixer(type, value ? GetVolume(type) : slider.minValue);
         PlayerPrefsData.Set<bool>(type.ToString(), value, false);
-
+        SetAudioMixer(type, value ? GetVolume(type) : slider.minValue);
+        
         // Slider Exception
-        if (GetVolume(type) <= slider.minValue) toggle.isOn = false;
+        slider.SetValueWithoutNotify(value ? GetVolume(type) : slider.minValue);
     }
 
     // Set 사운드 볼륨
