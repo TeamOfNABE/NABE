@@ -5,171 +5,144 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
+public enum AudioType 
+{   
+    Master,
+    BGM, 
+    SFX,
+}
 
 public class SoundManager : MonoSingleton<SoundManager>
 {
-    public enum AudioType { Music, SFX }
-
-    [Header("===Audio Mixer===")]
+    [Header("=== Audio Mixer ===")]
     [SerializeField] private AudioMixer audioMixer;
 
-    [Header("===Audio Source===")]
-    [SerializeField] private Transform musicAudioTransform;
-    [SerializeField] private Transform sfxAudioTransform;
-    
-    [Header("===Audio Management===")]
-    [SerializeField] private int audioID = 0;
-    private static Dictionary<int, AudioSource> MusicAudioDic = new Dictionary<int, AudioSource>();
-    private static Dictionary<int, AudioSource> SFXAudioDic = new Dictionary<int, AudioSource>();
+    [Header("=== Control ===")]
+    [SerializeField] private SoundVolumeControl control;
 
-    [Header("===App Pause===")]
+    [Header("=== Audio Management ===")]
+    [SerializeField, ReadOnly] private int audioIndex = 0;
+    
+    private Dictionary<AudioType, Transform> soundTransformDic = new Dictionary<AudioType, Transform>();
+    private static Dictionary<AudioType, Dictionary<int, AudioSource>> soundAudioDic = new Dictionary<AudioType, Dictionary<int, AudioSource>>();
+
+    [Header("=== Audio Setting ===")]
+    [SerializeField, Range(.1f, 10f)] private float musicFadeSpeed = 1f;
+
+    [Header("=== App Pause ===")]
     private bool applicationPause = false;
 
     [Header("===!!! Test Audio Clip !!!===")]
-    public AudioClip[] misicClip_Test;
-    public AudioClip[] sfxClip_Test;
-    public Transform testTarnsform;
+    public AudioClip[] misicClip_Test; // 나중에 지움
+    public AudioClip[] sfxClip_Test; // 나중에 지움
 
-    #region Music
-    public int PlayMusic(AudioClip clip, Transform transform = null)
+#region Setting
+    private void Awake()
     {
-        return playMusic(AudioType.Music, clip, 1f, transform);
+        foreach (AudioType type in Enum.GetValues(typeof(AudioType))) {
+            // Master는 사운드 관리에서 제외
+            if (type == AudioType.Master) continue;
+
+            // Add Audio Source Transform 
+            Transform typeGO = new GameObject(type.ToString()).transform;
+            typeGO.transform.parent = this.gameObject.transform;
+            soundTransformDic.Add(type, typeGO);
+
+            // Add Audio Management
+            soundAudioDic.Add(type, new Dictionary<int, AudioSource>());
+        }
+    }
+#endregion
+
+#region BGM (Loop, 1개의 사운드)
+    public int PlayBGM(AudioClip clip, Transform transform = null)
+    {
+        return PlayBGM(AudioType.BGM, clip, 1f, transform);
     }
 
-    public int PlayMusic(AudioClip clip, float volume, Transform transform = null)
+    public int PlayBGM(AudioClip clip, float volume, Transform transform = null)
     {
-        return playMusic(AudioType.Music, clip, volume, transform);
+        return PlayBGM(AudioType.BGM, clip, volume, transform);
     }
 
-    /// <summary>
-    /// Base Music
-    /// </summary>
-    private int playMusic(AudioType audioType, AudioClip audioClip, float volume, Transform transform)
+    private int PlayBGM(AudioType audioType, AudioClip audioClip, float volume, Transform transform)
     {
-        StopAllAudio(audioType, 1f);
+        StopAllAudio(audioType, musicFadeSpeed); // 기존 음악 제거
 
-        int audioID = AddAudio(audioType, audioClip, volume, transform);
+        int audioID = AddAudio(audioType, audioClip, volume, transform); // 새 음악 추가
 
-        StartCoroutine(FadeOutCoroutine(GetAudio(audioType, audioID), 1f));
+        StartCoroutine(FadeOutCoroutine(GetAudio(audioType, audioID), musicFadeSpeed)); // 볼륨 Fade O
 
         return audioID;
     }
-    #endregion
+#endregion
 
-    #region SFX
-    public int PlaySFX(AudioClip clip, Transform transform = null)
+#region Sound (Loop X, 여러개 사운드)
+    public int PlaySound(AudioClip clip, Transform transform = null)
     {
-        return PlaySFX(AudioType.SFX, clip, 1f, transform);
+        return PlaySound(AudioType.SFX, clip, 1f, transform);
     }
 
-    public int PlaySFX(AudioClip clip, float volume, Transform transform = null)
+    public int PlaySound(AudioClip clip, float volume, Transform transform = null)
     {
-        return PlaySFX(AudioType.SFX, clip, volume, transform);
+        return PlaySound(AudioType.SFX, clip, volume, transform);
     }
 
-    /// <summary>
-    /// Base SFX
-    /// </summary>
-    private int PlaySFX(AudioType audioType, AudioClip audioClip, float volume, Transform transform)
+    private int PlaySound(AudioType audioType, AudioClip audioClip, float volume, Transform transform)
     {
-        int audioID = AddAudio(audioType, audioClip, volume, transform);
+        int audioID = AddAudio(audioType, audioClip, volume, transform); // 새 음악 추가
 
-        StartCoroutine(FadeOutCoroutine(GetAudio(audioType, audioID), 0f));
+        StartCoroutine(FadeOutCoroutine(GetAudio(audioType, audioID), 0f)); // 볼륨 Fade X 즉시 사운드 실행
 
         return audioID;
     }
-    #endregion
+#endregion
 
-    #region Add AudioSource
+#region Add AudioSource (사운드 추가 -> 컴포넌트 할당)
     private int AddAudio(AudioType audioType, AudioClip audioClip, float volume, Transform transform)
     {
-        Dictionary<int, AudioSource> audioDic = GetAudioTypeDictionary(audioType);
-
         AudioSource audio = AddAudioSource(audioType, volume, transform);
         audio.clip = audioClip;
-        audioDic.Add(audioID, audio);
+        soundAudioDic[audioType].Add(audioIndex, audio);
 
-        return audioID++;
+        return audioIndex++;
     }
 
     private AudioSource AddAudioSource(AudioType audioType, float volume, Transform transform)
     {
-        Transform audioTransform = null;
-        AudioSource audio = null;
-        
         // Set AudioSource Transform
-        switch (audioType) {
-            case AudioType.Music:
-                audioTransform = musicAudioTransform;
-                break;
-            case AudioType.SFX:
-                audioTransform = sfxAudioTransform;
-                break;
-        }
-        if (transform != null) audioTransform = transform;
-        audio = audioTransform.AddComponent<AudioSource>();
+        soundTransformDic.TryGetValue(audioType, out Transform audioTransform);
 
-        // Sound Setting
-        switch (audioType) {
-            case AudioType.Music:
-                MusicSetting(audio, volume);
-                break;
-            case AudioType.SFX:
-                SFXSetting(audio, volume);
-                break;
-        }
+        // Set AudioSource Transform Exception
+        if (transform != null) audioTransform = transform;
+
+        // Set AudioSource
+        AudioSource audio = audioTransform.AddComponent<AudioSource>();
+
+        // AudioMixer Setting
+        AudioMixerSetting(audioType, audio, volume);
+
         return audio;
     }
 
-    private void MusicSetting(AudioSource audio, float volume)
+    // AudioMixer로 조절 가능 하도록 설정
+    private void AudioMixerSetting(AudioType audioType, AudioSource audio, float volume)
     {
-        audio.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Music")[0];
+        audio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(audioType.ToString())[0];
         audio.volume = volume;
-        audio.loop = true;
-    }
 
-    private void SFXSetting(AudioSource audio, float volume)
-    {
-        audio.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SFX")[0];
-        audio.volume = volume;
-    }
-    #endregion
-
-    #region Get AudioSource
-    private AudioSource GetAudio(AudioType audioType, int audioID)
-    {
-        Dictionary<int, AudioSource> audioDic = GetAudioTypeDictionary(audioType);
-
-        if (audioDic.ContainsKey(audioID)) {
-            return audioDic[audioID];
-        }
-        else {
-            return null;
+        if (audioType == AudioType.BGM) {
+            audio.loop = true;
         }
     }
-    #endregion
+#endregion
 
-    #region Get AudioDictionary
-    private Dictionary<int, AudioSource> GetAudioTypeDictionary(AudioType audioType)
-    {
-        Dictionary<int, AudioSource> audioDic = new Dictionary<int, AudioSource>();
-        switch (audioType) {
-            case AudioType.Music:
-                audioDic = MusicAudioDic;
-                break;
-            case AudioType.SFX:
-                audioDic = SFXAudioDic;
-                break;
-        }
-        return audioDic;
-    }
-    #endregion
-
-    #region Auto Remove Audio
+#region Auto Remove Audio (자동 삭제 관리)
     private void LateUpdate()
     {
-        UpdateAllAudio(MusicAudioDic);
-        UpdateAllAudio(SFXAudioDic);
+        foreach (var audioDic in soundAudioDic) {
+            UpdateAllAudio(audioDic.Value);
+        }
     }
 
     private void UpdateAllAudio(Dictionary<int, AudioSource> audioDic)
@@ -184,12 +157,12 @@ public class SoundManager : MonoSingleton<SoundManager>
             }
         }
     }
-    #endregion
+#endregion
 
-    #region Stop All Audio
+#region Stop All Audio (모든 사운드 삭제)
     private void StopAllAudio(AudioType audioType, float fadeOutTime)
     {
-        Dictionary<int, AudioSource> audioDic = GetAudioTypeDictionary(audioType);
+        Dictionary<int, AudioSource> audioDic = soundAudioDic[audioType];
         List<int> keys = new List<int>(audioDic.Keys);
         
         StopAllCoroutines();
@@ -203,9 +176,9 @@ public class SoundManager : MonoSingleton<SoundManager>
             }
         }
     }
-    #endregion
+#endregion
 
-    #region Volume Fade
+#region Volume Fade (볼륨 페이드 인/아웃 효과)
     IEnumerator FadeInCoroutine(AudioSource audio, float fadeOutTime, Action callBack = null) // Volume Off
     {
         float time = 0f;
@@ -214,7 +187,6 @@ public class SoundManager : MonoSingleton<SoundManager>
         if (fadeOutTime > 0) {
             while (time <= fadeOutTime) {
                 audio.volume = Mathf.Lerp(startVolume, 0f, time / fadeOutTime);
-                
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -222,35 +194,41 @@ public class SoundManager : MonoSingleton<SoundManager>
         audio.volume = 0f;
         audio.Pause();
         callBack?.Invoke();
-        yield break;
     }
 
     IEnumerator FadeOutCoroutine(AudioSource audio, float fadeOutTime, Action callBack = null)  // Volume On
     {
         float time = 0f;
         float startVolume = audio.volume;
-
         audio.Play();
 
         if (fadeOutTime > 0) {
             while (time <= fadeOutTime) {
                 audio.volume = Mathf.Lerp(0f, startVolume, time / fadeOutTime);
-
                 time += Time.deltaTime;
                 yield return null;
             }
         }
         audio.volume = startVolume;
         callBack?.Invoke();
-        yield break;
     }
-    #endregion
+#endregion
 
-    #region Volume Slider ( Slider.MinValue => 0.0001 )
-    public void MasterVolume(float level) => audioMixer.SetFloat("materVolume", Mathf.Log10(level) * 20f);
-    public void MusicVolume(float level) => audioMixer.SetFloat("musicVolume", Mathf.Log10(level) * 20f);
-    public void SFXVolume(float level) => audioMixer.SetFloat("sfxVolume", Mathf.Log10(level) * 20f);
-    #endregion
+#region Get Set, ETC
+    private AudioSource GetAudio(AudioType audioType, int audioID)
+    {
+        return soundAudioDic[audioType].TryGetValue(audioID, out AudioSource value) ? value : null;
+    }
+
+    public SoundVolumeControl GetControl()
+    {
+        return control;
+    }
+
+    public AudioMixer GetAudioMixer()
+    {
+        return audioMixer;
+    }
 
     private void OnApplicationPause(bool pause)
     {
@@ -263,4 +241,5 @@ public class SoundManager : MonoSingleton<SoundManager>
             }
         }
     }
+#endregion
 }

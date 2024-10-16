@@ -7,7 +7,7 @@ using System;
 
 public class UIButton : UIItem
 {
-    public bool isPointerSizeUp = true;
+    [SerializeField] private bool isPointerSizeUp = true;
 
     public override void OnEnter(PointerEventData eventData)
     {

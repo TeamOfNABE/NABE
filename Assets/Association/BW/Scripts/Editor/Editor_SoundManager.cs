@@ -5,6 +5,7 @@ using UnityEditor;
 
 namespace BW
 {
+    
     [CustomEditor(typeof(SoundManager))]
     public class Editor_SoundManager : Editor
     {
@@ -29,7 +30,7 @@ namespace BW
             EditorGUILayout.LabelField("=== Music ===", style2);
             for (int i = 0; i < soundManager.misicClip_Test.Length; ++i) {
                 if (GUILayout.Button("Music_" + i)) {
-                    SoundManager.instance.PlayMusic(soundManager.misicClip_Test[i]);
+                    SoundManager.instance.PlayBGM(soundManager.misicClip_Test[i]);
                 }
             }
 
@@ -37,7 +38,7 @@ namespace BW
             EditorGUILayout.LabelField("=== SFX ===", style2);
             for (int i = 0; i < soundManager.sfxClip_Test.Length; ++i) {
                 if (GUILayout.Button("SFX_" + i)) {
-                    SoundManager.instance.PlaySFX(soundManager.sfxClip_Test[i]);
+                    SoundManager.instance.PlaySound(soundManager.sfxClip_Test[i]);
                 }
             }
         }

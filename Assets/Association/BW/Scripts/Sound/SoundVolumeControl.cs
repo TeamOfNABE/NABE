@@ -1,54 +1,78 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SoundVolumeControl : MonoBehaviour
 {
-    [SerializeField] private SoundVolumeView soundVolumeView;
+    private AudioMixer audioMixer;
 
     private void Start()
     {
-        // Slider Setting (Min value shoule be '0.0001f')
-        soundVolumeView.masterSlider.minValue = 0.0001f;
-        soundVolumeView.musicSlider.minValue = 0.0001f;
-        soundVolumeView.sfxSlider.minValue = 0.0001f;
+        audioMixer = SoundManager.instance.GetAudioMixer();
 
-        // Slider OnValueChanged Setting
-        soundVolumeView.masterSlider.onValueChanged.AddListener((value) => SoundManager.instance.MasterVolume(value));
-        soundVolumeView.musicSlider.onValueChanged.AddListener((value) => SoundManager.instance.MusicVolume(value));
-        soundVolumeView.sfxSlider.onValueChanged.AddListener((value) => SoundManager.instance.SFXVolume(value));
-        
-        // Get Saved value
-        GetVolume(out float masterVol, out float musicVol, out float sfxVol);
-
-        // Set Slider value
-        SetVolume(masterVol, musicVol, sfxVol);
+        foreach (AudioType type in Enum.GetValues(typeof(AudioType))) {
+            SetAudioMixer(type, GetUse(type) ? GetVolume(type) : 0.0001f);
+        }
     }
 
-    private void GetVolume(out float masterVol, out float musicVol, out float sfxVol)
+    // Set 오디오 믹서
+    public void SetAudioMixer(AudioType type, float level)
     {
-        masterVol = PlayerPrefsData.Get<float>("MasterVol", 0.5f);
-        musicVol = PlayerPrefsData.Get<float>("MusicVol", 0.5f);
-        sfxVol = PlayerPrefsData.Get<float>("SFXVol", 0.5f);
+        audioMixer.SetFloat(type.ToString() + "Volume", Mathf.Log10(level) * 20f);
+    }
+    
+    // UI 세팅 
+    public void SettingSound(AudioType type, Toggle toggle, Slider slider)
+    {
+        toggle.isOn = GetVolume(type) > slider.minValue ? GetUse(type) : false;
+        toggle.onValueChanged.AddListener((value) => SetUse(type, toggle, slider, value));
+
+        slider.value = toggle.isOn ? GetVolume(type) : slider.minValue;
+        slider.onValueChanged.AddListener((value) => SetVolume(type, toggle, slider, value));
+        slider.onValueChanged.AddListener((value) => SetAudioMixer(type, value));
     }
 
-    private void SetVolume(float masterVol, float musicVol, float sfxVol)
-    {
-        SoundManager.instance.MasterVolume(masterVol);
-        SoundManager.instance.MusicVolume(musicVol);
-        SoundManager.instance.SFXVolume(sfxVol);
-
-        soundVolumeView.masterSlider.value = masterVol;
-        soundVolumeView.musicSlider.value = musicVol;
-        soundVolumeView.sfxSlider.value = sfxVol;
+    // Get 사용여부(음소거)
+    private bool GetUse(AudioType type)
+    { 
+        return PlayerPrefsData.Get<bool>(type.ToString(), true, false);
     }
 
-    public void SaveVolume()
+    // Get 사운드 볼륨
+    private float GetVolume(AudioType type)
+    { 
+        return PlayerPrefsData.Get<float>(type.ToString() + "Volume", 1f, false);
+    }
+
+    // Set 사용여부(음소거)
+    private void SetUse(AudioType type, Toggle toggle, Slider slider, bool value)
     {
-        PlayerPrefsData.Set("MasterVol", soundVolumeView.masterSlider.value);
-        PlayerPrefsData.Set("MusicVol", soundVolumeView.musicSlider.value);
-        PlayerPrefsData.Set("SFXVol", soundVolumeView.sfxSlider.value);
+        // Set Toggle
+        slider.SetValueWithoutNotify(GetVolume(type));
+        SetAudioMixer(type, value ? GetVolume(type) : slider.minValue);
+        PlayerPrefsData.Set<bool>(type.ToString(), value, false);
+
+        // Slider Exception
+        if (GetVolume(type) <= slider.minValue) toggle.isOn = false;
+    }
+
+    // Set 사운드 볼륨
+    private void SetVolume(AudioType type, Toggle toggle, Slider slider, float value)
+    {
+        // Set Volume
+        PlayerPrefsData.Set<float>(type.ToString() + "Volume", value, false);
+
+        // Toggle Exception
+        if (value <= slider.minValue) {
+            if (GetUse(type)) SetUse(type, toggle, slider, false);
+            toggle.isOn = false;
+        }
+        else {
+            if (!GetUse(type)) SetUse(type, toggle, slider, true);
+            toggle.isOn = true;
+        }
     }
 }
