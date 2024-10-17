@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 623086885
+    locked: 0
+  - name: Field
+    uniqueID: 3781121587
+    locked: 0
+  - name: Floor
+    uniqueID: 4007034945
+    locked: 0

@@ -22,7 +22,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     [Header("=== Audio Management ===")]
     [SerializeField, ReadOnly] private int audioIndex = 0;
-    
     private Dictionary<AudioType, Transform> soundTransformDic = new Dictionary<AudioType, Transform>();
     private static Dictionary<AudioType, Dictionary<int, AudioSource>> soundAudioDic = new Dictionary<AudioType, Dictionary<int, AudioSource>>();
 
@@ -32,7 +31,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     [Header("=== App Pause ===")]
     private bool applicationPause = false;
 
-    [Header("===!!! Test Audio Clip !!!===")]
+    [Header("===!!! Test Audio Clip !!!===")] // 나중에 지움
     public AudioClip[] misicClip_Test; // 나중에 지움
     public AudioClip[] sfxClip_Test; // 나중에 지움
 
