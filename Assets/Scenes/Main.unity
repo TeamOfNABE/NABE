@@ -4601,16 +4601,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <adventureButton>k__BackingField: {fileID: 100493770}
   <passButton>k__BackingField: {fileID: 1807251817}
-  <checkButton>k__BackingField: {fileID: 0}
-  <quick1Button>k__BackingField: {fileID: 697626439}
-  <quick2Button>k__BackingField: {fileID: 1185268525}
-  <quick3Button>k__BackingField: {fileID: 183445874}
-  <quick4Button>k__BackingField: {fileID: 696349091}
-  <quick5Button>k__BackingField: {fileID: 419993700}
-  <quick6Button>k__BackingField: {fileID: 1552917627}
-  <quick7Button>k__BackingField: {fileID: 1466315537}
-  <quick8Button>k__BackingField: {fileID: 1988490819}
-  <minimize>k__BackingField: {fileID: 76666415}
+  <invisibleButton>k__BackingField: {fileID: 875856952}
+  <quickButton>k__BackingField:
+  - {fileID: 697626439}
+  - {fileID: 1185268525}
+  - {fileID: 183445874}
+  - {fileID: 696349091}
+  - {fileID: 419993700}
+  - {fileID: 1552917627}
+  - {fileID: 1466315537}
+  - {fileID: 1988490819}
+  <quickMinimize>k__BackingField: {fileID: 76666415}
 --- !u!1 &419993696
 GameObject:
   m_ObjectHideFlags: 0
@@ -6889,7 +6890,7 @@ GameObject:
   - component: {fileID: 587194546}
   - component: {fileID: 587194548}
   m_Layer: 5
-  m_Name: Chat_1
+  m_Name: SmallChat_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7456,6 +7457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 666612854}
   - component: {fileID: 666612855}
+  - component: {fileID: 666612856}
   - component: {fileID: 666612853}
   - component: {fileID: 666612852}
   - component: {fileID: 666612851}
@@ -7547,9 +7549,9 @@ RectTransform:
   - {fileID: 1212853289}
   - {fileID: 416925450}
   - {fileID: 163079065}
-  - {fileID: 704975280}
-  - {fileID: 2056268151}
   - {fileID: 482913219}
+  - {fileID: 2056268151}
+  - {fileID: 704975280}
   - {fileID: 1513729713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7570,18 +7572,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f398a45fb18d4234787eda1735496a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainUI:
-    <profile_Main>k__BackingField: {fileID: 1085937566}
-    <currency_Main>k__BackingField: {fileID: 282746193}
-    <roundInfo_Main>k__BackingField: {fileID: 1212853292}
-    <quick_Main>k__BackingField: {fileID: 416925451}
-    <skill_Main>k__BackingField: {fileID: 797753604}
-    <equipment_Main>k__BackingField: {fileID: 195265898}
-    <option_Main>k__BackingField: {fileID: 1493513436}
-    <chat_Main>k__BackingField: {fileID: 704975284}
-    <gacha_Main>k__BackingField: {fileID: 2056268156}
-    <mission_Main>k__BackingField: {fileID: 482913224}
-    <bottom_Main>k__BackingField: {fileID: 1513729717}
+  view: {fileID: 666612856}
+--- !u!114 &666612856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666612850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87053b597d505c045a327863d7986838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <view_Profile>k__BackingField: {fileID: 1085937566}
+  <view_Currency>k__BackingField: {fileID: 282746193}
+  <view_RoundInfo>k__BackingField: {fileID: 1212853292}
+  <view_Quick>k__BackingField: {fileID: 416925451}
+  <view_Skill>k__BackingField: {fileID: 797753604}
+  <view_Equipment>k__BackingField: {fileID: 195265898}
+  <view_Option>k__BackingField: {fileID: 1493513436}
+  <view_Mission>k__BackingField: {fileID: 482913224}
+  <view_Gacha>k__BackingField: {fileID: 2056268156}
+  <view_Chat>k__BackingField: {fileID: 704975284}
+  <view_Bottom>k__BackingField: {fileID: 1513729717}
 --- !u!1 &668256844
 GameObject:
   m_ObjectHideFlags: 0
@@ -8025,7 +8039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <chat>k__BackingField: {fileID: 704975285}
-  <minimizeChat>k__BackingField:
+  <smallChat>k__BackingField:
   - {fileID: 1031588686}
   - {fileID: 587194548}
 --- !u!114 &704975285
@@ -8973,15 +8987,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f150f793b0b892428e813c462f559dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <auto>k__BackingField: {fileID: 1179313980}
-  <skills>k__BackingField:
+  <autoButton>k__BackingField: {fileID: 1179313980}
+  <skill>k__BackingField:
   - {fileID: 1990531617}
   - {fileID: 1822546804}
   - {fileID: 655870369}
   - {fileID: 1992155216}
   - {fileID: 1800587169}
   - {fileID: 1734749303}
-  <minimize>k__BackingField: {fileID: 1080155292}
+  <skillMinimize>k__BackingField: {fileID: 1080155292}
 --- !u!1 &840759649
 GameObject:
   m_ObjectHideFlags: 0
@@ -10463,7 +10477,7 @@ GameObject:
   - component: {fileID: 1031588684}
   - component: {fileID: 1031588686}
   m_Layer: 5
-  m_Name: Chat_0
+  m_Name: SmallChat_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11596,7 +11610,7 @@ GameObject:
   - component: {fileID: 1179313980}
   - component: {fileID: 1179313979}
   m_Layer: 5
-  m_Name: Auto
+  m_Name: AutoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12082,11 +12096,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec58b79bd353c443bc76d29d0136465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <accelButton>k__BackingField: {fileID: 1358557108}
+  <AcceleratorButton>k__BackingField: {fileID: 1358557108}
   <roundText>k__BackingField: {fileID: 722816809}
   <roundSlider>k__BackingField: {fileID: 4799027247994825952}
-  <bossButton>k__BackingField: {fileID: 1294409014}
   <roundTimer>k__BackingField: {fileID: 1434284461}
+  <bossButton>k__BackingField: {fileID: 1294409014}
 --- !u!1 &1213488882
 GameObject:
   m_ObjectHideFlags: 0
@@ -13290,7 +13304,7 @@ GameObject:
   - component: {fileID: 1358557106}
   - component: {fileID: 1358557108}
   m_Layer: 5
-  m_Name: AccelButton
+  m_Name: AcceleratorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14453,11 +14467,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <snail>k__BackingField: {fileID: 694860126}
-  <inventory>k__BackingField: {fileID: 0}
+  <inventory>k__BackingField: {fileID: 964544283}
   <promotion>k__BackingField: {fileID: 1215074722}
   <stat>k__BackingField: {fileID: 631157338}
   <preset>k__BackingField: {fileID: 572400176}
-  <minimize>k__BackingField: {fileID: 1974054434}
+  <optionMinimize>k__BackingField: {fileID: 1974054434}
 --- !u!1 &1512037495
 GameObject:
   m_ObjectHideFlags: 0
@@ -19012,8 +19026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <gacha>k__BackingField: {fileID: 2056268155}
-  <level>k__BackingField: {fileID: 405789717}
-  <levelText>k__BackingField: {fileID: 38903171}
+  <gachaLevelButton>k__BackingField: {fileID: 405789717}
+  <gachaLevelText>k__BackingField: {fileID: 38903171}
   <countText>k__BackingField: {fileID: 2042852315}
   <auto>k__BackingField: {fileID: 2095413276}
 --- !u!1 &2060599506

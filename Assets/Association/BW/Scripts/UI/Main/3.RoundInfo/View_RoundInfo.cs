@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class RoundInfo_Main : MainPanel
+public class View_RoundInfo : MainPanel
 {
-    [field : SerializeField] public UIItem accelButton { get; private set; }
+    [field : Header("=== Accelerator ===")]
+    [field : SerializeField] public UIItem AcceleratorButton { get; private set; }
+
+    [field : Header("=== Round ===")]
     [field : SerializeField] public TMP_Text roundText { get; private set; }
     [field : SerializeField] public RoundSlider roundSlider { get; private set; }
-    [field : SerializeField] public UIItem bossButton { get; private set; }
     [field : SerializeField] public RoundTimer roundTimer { get; private set; }
+
+    [field : Header("=== Boss ===")]
+    [field : SerializeField] public UIItem bossButton { get; private set; }
 
     // RoundInfo 데이터 등록 필요
 

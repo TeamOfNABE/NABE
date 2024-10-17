@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment_Main : MainPanel
-{
+public class View_Equipment : MainPanel
+{   
+    [field : Header("=== Equipment ===")]
     [field : SerializeField] public UIItem hat { get; private set; } // 투구
     [field : SerializeField] public UIItem top { get; private set; } // 상의
     [field : SerializeField] public UIItem belt { get; private set; } // 벨트
